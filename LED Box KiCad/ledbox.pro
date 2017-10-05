@@ -1,4 +1,4 @@
-update=Donnerstag, 05. Oktober 2017 'u18' 13:18:54
+update=Thursday, 05 October 2017 'pmt' 16:28:23
 version=1
 last_client=kicad
 [pcbnew]
@@ -58,18 +58,4 @@ LibName26=opto
 LibName27=atmel
 LibName28=contrib
 LibName29=valves
-LibName30=/Users/fabiangeissler/git/KiCad_Library/Symbols/74xxLVCxG
-LibName31=/Users/fabiangeissler/git/KiCad_Library/Symbols/analog_devices
-LibName32=/Users/fabiangeissler/git/KiCad_Library/Symbols/boards
-LibName33=/Users/fabiangeissler/git/KiCad_Library/Symbols/bridge_rectifier
-LibName34=/Users/fabiangeissler/git/KiCad_Library/Symbols/caf
-LibName35=/Users/fabiangeissler/git/KiCad_Library/Symbols/cirrus logic
-LibName36=/Users/fabiangeissler/git/KiCad_Library/Symbols/eeprom
-LibName37=/Users/fabiangeissler/git/KiCad_Library/Symbols/ft232rl
-LibName38=/Users/fabiangeissler/git/KiCad_Library/Symbols/linear_technology
-LibName39=/Users/fabiangeissler/git/KiCad_Library/Symbols/micrel
-LibName40=/Users/fabiangeissler/git/KiCad_Library/Symbols/NXP Semiconductor
-LibName41=/Users/fabiangeissler/git/KiCad_Library/Symbols/SigmaDSP
-LibName42=/Users/fabiangeissler/git/KiCad_Library/Symbols/texas_instruments
-LibName43=/Users/fabiangeissler/git/KiCad_Library/Symbols/tl431
-LibName44=/Users/fabiangeissler/git/KiCad_Library/Symbols/toslink
+LibName30=ledbox-newsymbols

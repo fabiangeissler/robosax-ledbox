@@ -1,0 +1,8 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP SN65176B
+D DIFFERENTIAL BUS TRANSCEIVER
+K bus, transceiver, differential, symmetric, line, driver
+$ENDCMP
+#
+#End Doc Library
