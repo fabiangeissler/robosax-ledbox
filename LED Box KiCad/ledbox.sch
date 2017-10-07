@@ -242,9 +242,9 @@ L SN75176B U2
 U 1 1 59D61C67
 P 4200 5300
 F 0 "U2" H 4250 5800 60  0000 L CNN
-F 1 "SN75176B" H 4250 5700 60  0000 L CNN
+F 1 "ST485C" H 4250 5700 60  0000 L CNN
 F 2 "Housings_SOIC:SOIC-8_3.9x4.9mm_Pitch1.27mm" H 4250 5900 60  0001 L CNN
-F 3 "http://www.ti.com/lit/ds/symlink/sn65176b.pdf" H 4250 6000 60  0001 L CNN
+F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/4b/81/a8/cd/8a/72/47/82/CD00002183.pdf/files/CD00002183.pdf/jcr:content/translations/en.CD00002183.pdf" H 4250 6000 60  0001 L CNN
 	1    4200 5300
 	1    0    0    -1  
 $EndComp
@@ -867,79 +867,79 @@ Text Label 4500 3400 2    60   ~ 0
 LED_IR
 Wire Wire Line
 	4500 3400 4100 3400
-Text Label 7900 3900 0    60   ~ 0
+Text Label 7900 3600 0    60   ~ 0
 COMM_A
-Text Label 7900 4200 0    60   ~ 0
+Text Label 7900 3900 0    60   ~ 0
 COMM_B
 $Comp
 L D D2
 U 1 1 59D7F0C6
-P 8550 3900
-F 0 "D2" H 8550 4000 50  0000 C CNN
-F 1 "1N4148" H 8550 3800 50  0000 C CNN
-F 2 "Diodes_SMD:D_MiniMELF" H 8550 3900 50  0001 C CNN
-F 3 "" H 8550 3900 50  0001 C CNN
-	1    8550 3900
-	1    0    0    -1  
+P 8550 3600
+F 0 "D2" H 8550 3700 50  0000 C CNN
+F 1 "1N4148" H 8550 3500 50  0000 C CNN
+F 2 "Diodes_SMD:D_MiniMELF" H 8550 3600 50  0001 C CNN
+F 3 "" H 8550 3600 50  0001 C CNN
+	1    8550 3600
+	-1   0    0    1   
 $EndComp
 $Comp
 L D D3
 U 1 1 59D7F13F
-P 8550 4200
-F 0 "D3" H 8550 4300 50  0000 C CNN
-F 1 "1N4148" H 8550 4100 50  0000 C CNN
-F 2 "Diodes_SMD:D_MiniMELF" H 8550 4200 50  0001 C CNN
-F 3 "" H 8550 4200 50  0001 C CNN
-	1    8550 4200
-	1    0    0    -1  
+P 8550 3900
+F 0 "D3" H 8550 4000 50  0000 C CNN
+F 1 "1N4148" H 8550 3800 50  0000 C CNN
+F 2 "Diodes_SMD:D_MiniMELF" H 8550 3900 50  0001 C CNN
+F 3 "" H 8550 3900 50  0001 C CNN
+	1    8550 3900
+	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	7900 4200 8400 4200
+	7900 3900 8400 3900
 Wire Wire Line
-	8400 3900 7900 3900
+	8400 3600 7900 3600
 Wire Wire Line
-	8700 4200 8900 4200
+	8700 3900 8800 3900
 Wire Wire Line
-	8800 4200 8800 3900
+	8800 3900 8800 3600
 Wire Wire Line
-	8800 3900 8700 3900
+	8700 3600 8900 3600
 $Comp
 L R R11
 U 1 1 59D7F58B
-P 9050 4200
-F 0 "R11" V 9130 4200 50  0000 C CNN
-F 1 "100" V 9050 4200 50  0000 C CNN
-F 2 "Resistors_SMD:R_1206" V 8980 4200 50  0001 C CNN
-F 3 "" H 9050 4200 50  0001 C CNN
-	1    9050 4200
+P 9050 3600
+F 0 "R11" V 9130 3600 50  0000 C CNN
+F 1 "100" V 9050 3600 50  0000 C CNN
+F 2 "Resistors_SMD:R_1206" V 8980 3600 50  0001 C CNN
+F 3 "" H 9050 3600 50  0001 C CNN
+	1    9050 3600
 	0    1    1    0   
 $EndComp
 $Comp
 L C C6
 U 1 1 59D7F6C9
-P 9300 3950
-F 0 "C6" H 9325 4050 50  0000 L CNN
-F 1 "47p" H 9325 3850 50  0000 L CNN
-F 2 "Capacitors_SMD:C_1206" H 9338 3800 50  0001 C CNN
-F 3 "" H 9300 3950 50  0001 C CNN
-	1    9300 3950
+P 9300 3850
+F 0 "C6" H 9325 3950 50  0000 L CNN
+F 1 "22p" H 9325 3750 50  0000 L CNN
+F 2 "Capacitors_SMD:C_1206" H 9338 3700 50  0001 C CNN
+F 3 "" H 9300 3850 50  0001 C CNN
+	1    9300 3850
 	1    0    0    -1  
 $EndComp
 $Comp
 L R R13
 U 1 1 59D7F73B
-P 9600 3950
-F 0 "R13" V 9680 3950 50  0000 C CNN
-F 1 "22k" V 9600 3950 50  0000 C CNN
-F 2 "Resistors_SMD:R_1206" V 9530 3950 50  0001 C CNN
-F 3 "" H 9600 3950 50  0001 C CNN
-	1    9600 3950
+P 9600 3850
+F 0 "R13" V 9680 3850 50  0000 C CNN
+F 1 "22k" V 9600 3850 50  0000 C CNN
+F 2 "Resistors_SMD:R_1206" V 9530 3850 50  0001 C CNN
+F 3 "" H 9600 3850 50  0001 C CNN
+	1    9600 3850
 	1    0    0    -1  
 $EndComp
-Text Label 9600 4200 2    60   ~ 0
+Text Label 9600 3600 2    60   ~ 0
 AIN0
-Text Notes 7800 4950 0    60   ~ 0
-Bus Kollisionsdetektor\nWenn der Low Pegel auf dem Bus rund 1.4V \nüberschreitet liegt eine Kollision vor. Da der \nLow Level Treiber schwächer ist als der High \nLevel Treiber wird dieser Pegel ausgewertet \n(vgl. DS Fig.1 und Fig.2).
+Text Notes 7900 4850 0    60   ~ 0
+Bus Kollisionsdetektor\nWenn der high Pegel auf dem Bus rund 3V \nunterschreitet liegt eine Kollision vor. Da der \nhigh level Treiber schwächer ist als der low \nlevel Treiber wird dieser Pegel ausgewertet \n(vgl. DS S.12, Fig.12 und Fig.13).
 $Comp
 L +5V #PWR026
 U 1 1 59D8191E
@@ -995,8 +995,8 @@ Wire Wire Line
 	10300 4700 10300 4600
 Wire Wire Line
 	10300 3800 10300 3700
-Text Notes 10450 4050 0    60   ~ 0
-2V
+Text Notes 10500 4000 0    60   ~ 0
+2,4V
 $Comp
 L C C7
 U 1 1 59D823EB
@@ -1023,40 +1023,8 @@ Wire Wire Line
 	10600 4700 10600 4600
 Wire Wire Line
 	10600 4300 10600 4200
-Connection ~ 8800 4200
 Wire Wire Line
-	9200 4200 9600 4200
-Wire Wire Line
-	9600 4200 9600 4100
-Wire Wire Line
-	9300 4200 9300 4100
-Connection ~ 9300 4200
-$Comp
-L +5V #PWR029
-U 1 1 59D83ED5
-P 9300 3700
-F 0 "#PWR029" H 9300 3550 50  0001 C CNN
-F 1 "+5V" H 9300 3840 50  0000 C CNN
-F 2 "" H 9300 3700 50  0001 C CNN
-F 3 "" H 9300 3700 50  0001 C CNN
-	1    9300 3700
-	1    0    0    -1  
-$EndComp
-$Comp
-L +5V #PWR030
-U 1 1 59D83F43
-P 9600 3700
-F 0 "#PWR030" H 9600 3550 50  0001 C CNN
-F 1 "+5V" H 9600 3840 50  0000 C CNN
-F 2 "" H 9600 3700 50  0001 C CNN
-F 3 "" H 9600 3700 50  0001 C CNN
-	1    9600 3700
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	9600 3700 9600 3800
-Wire Wire Line
-	9300 3800 9300 3700
+	9200 3600 9600 3600
 Text Label 4500 2000 2    60   ~ 0
 AIN1
 Text Label 4500 1900 2    60   ~ 0
@@ -1088,14 +1056,14 @@ Text Notes 4550 2000 0    60   ~ 0
 Analog Comparator \nwird verwendet
 Connection ~ 4500 6800
 Wire Wire Line
-	4600 7100 4400 7100
+	4400 7100 4600 7100
 Wire Wire Line
 	4400 7200 4500 7200
 Wire Wire Line
 	4500 7200 4500 7100
 Connection ~ 4500 7100
 Wire Wire Line
-	3800 7300 3800 7100
+	3800 7100 3800 7300
 Wire Wire Line
 	3800 7100 3900 7100
 Wire Wire Line
@@ -1112,4 +1080,38 @@ F 3 "" H 3800 6700 50  0001 C CNN
 	1    3800 6700
 	1    0    0    -1  
 $EndComp
+Text Notes 2050 4750 0    60   ~ 0
+Neues Bauteil: ST485C \n- viel geringerer Ruhestrom als SN75176 \nBei diesem Sender ist der high side Treiber \nschwächer als der low side Treiber, daher \nmuss die CD Schaltung umgedreht werden.\n
+Connection ~ 8800 3600
+$Comp
+L GND #PWR?
+U 1 1 59D8C75F
+P 9300 4100
+F 0 "#PWR?" H 9300 3850 50  0001 C CNN
+F 1 "GND" H 9300 3950 50  0000 C CNN
+F 2 "" H 9300 4100 50  0001 C CNN
+F 3 "" H 9300 4100 50  0001 C CNN
+	1    9300 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 59D8C7D0
+P 9600 4100
+F 0 "#PWR?" H 9600 3850 50  0001 C CNN
+F 1 "GND" H 9600 3950 50  0000 C CNN
+F 2 "" H 9600 4100 50  0001 C CNN
+F 3 "" H 9600 4100 50  0001 C CNN
+	1    9600 4100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9600 4100 9600 4000
+Wire Wire Line
+	9300 4100 9300 4000
+Wire Wire Line
+	9300 3700 9300 3600
+Connection ~ 9300 3600
+Wire Wire Line
+	9600 3600 9600 3700
 $EndSCHEMATC
