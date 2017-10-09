@@ -1,4 +1,4 @@
-update=Thursday, 05 October 2017 'pmt' 16:28:23
+update=Monday, 09 October 2017 'pmt' 17:27:27
 version=1
 last_client=kicad
 [pcbnew]
@@ -59,3 +59,4 @@ LibName27=atmel
 LibName28=contrib
 LibName29=valves
 LibName30=ledbox-newsymbols
+LibName31=switches
