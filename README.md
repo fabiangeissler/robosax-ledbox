@@ -5,5 +5,5 @@ Die Boxen bestehen aus einer RGB LED zur Statusanzeige und einem Button zur Akti
 
 Genauere Informationen zum mechanichen Aufbau, Maße und Datenprotokolle folgen sobald sie festgelegt wurden.
 
-Fabain Geißler  
+Fabian Geißler  
 RoboSAX Team
