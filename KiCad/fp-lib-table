@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name ledbox-newfootprints)(type KiCad)(uri "$(KIPRJMOD)/ledbox-newfootprints.pretty")(options "")(descr ""))
+)

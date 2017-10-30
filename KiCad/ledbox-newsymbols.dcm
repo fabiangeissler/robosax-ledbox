@@ -1,0 +1,13 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP LRTBG6TG
+D LED RGB 6 pins
+K led rgb diode
+$ENDCMP
+#
+$CMP SN65176B
+D DIFFERENTIAL BUS TRANSCEIVER
+K bus, transceiver, differential, symmetric, line, driver
+$ENDCMP
+#
+#End Doc Library
