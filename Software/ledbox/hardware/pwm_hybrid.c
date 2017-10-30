@@ -15,7 +15,7 @@
 // Hybrid software/hardware PWM simulates a higher bit PWM by keeping the output
 // level high for the needed amount of overflows and then setting it low.
 
-#define PWM_HYBRID_PS		((0 << CS02) | (0 << CS01) | (1 << CS00))
+#define PWM_HYBRID_PS		((0 << CS22) | (0 << CS21) | (1 << CS20))
 #define PWM_HYBRID_BITMASK	((uint8_t)(~(0xFF << (PWM_HYBRID_BITS - 8))))
 #define PWM_HYBRID_TOP		((uint16_t)(~(0xFFFF << PWM_HYBRID_BITS)))
 
@@ -29,15 +29,15 @@ volatile uint8_t _pwm_hybrid_cnt;
 // > sei(); <
 void pwm_hybrid_init()
 {
-	// Compare channel A
+	// Compare channel B
 	// Fast PWM Mode (count up to 0xFF and back down)
-	TCCR0A = (1 << COM0A1) | (1 << COM0A0) | (0 << WGM01) | (1 << WGM00);
+	TCCR2A = (1 << COM2B1) | (1 << COM2B0) | (0 << WGM21) | (1 << WGM20);
 
 	// Turn timer on
-	TCCR0B = PWM_HYBRID_PS;
+	TCCR2B = PWM_HYBRID_PS;
 
 	// Enable overflow interrupt
-	TIMSK0 = (1 << TOIE0);
+	TIMSK2 = (1 << TOIE2);
 
 	// Clear counter
 	_pwm_hybrid_cnt = 0;
@@ -56,7 +56,7 @@ void pwm_hybrid_set(uint16_t val)
 }
 
 // Timer 0 overflow
-ISR(TIMER0_OVF_vect)
+ISR(TIMER2_OVF_vect)
 {
 	uint8_t seton, setval;
 	uint8_t cnt = _pwm_hybrid_cnt;
@@ -74,15 +74,15 @@ ISR(TIMER0_OVF_vect)
 
 	if(_pwm_hybrid_cnt < _pwm_hybrid_seton)
 	{
-		OCR0A = 0xFF;
+		OCR2B = 0xFF;
 	}
 	else if(_pwm_hybrid_cnt > _pwm_hybrid_seton)
 	{
-		OCR0A = 0;
+		OCR2B = 0;
 	}
 	else
 	{
-		OCR0A = _pwm_hybrid_setval;
+		OCR2B = _pwm_hybrid_setval;
 	}
 
 	_pwm_hybrid_cnt = (cnt + 1) & PWM_HYBRID_BITMASK;

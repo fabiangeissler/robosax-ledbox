@@ -18,9 +18,14 @@
 // > sei(); <
 void pwm_init();
 
-// Set the PWM compare value.
+// Set the PWM compare value A.
 // A value of 0x0000 generates the highest average output voltage and
 // a value of 0xFFFF generates an average output voltage of zero volts.
-void pwm_set_ocrc(uint16_t val);
+void pwm_set_ocra(uint16_t val);
+
+// Set the PWM compare value B.
+// A value of 0x0000 generates the highest average output voltage and
+// a value of 0xFFFF generates an average output voltage of zero volts.
+void pwm_set_ocrb(uint16_t val);
 
 #endif /* PWM_H_ */
