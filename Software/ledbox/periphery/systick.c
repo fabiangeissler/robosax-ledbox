@@ -5,7 +5,8 @@
  *      Author: fabiangeissler
  */
 
-#include "systick.h"
+#include "../periphery/systick.h"
+
 #include "avr/io.h"
 #include "avr/interrupt.h"
 

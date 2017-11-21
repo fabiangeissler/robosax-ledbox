@@ -8,11 +8,11 @@
 #ifndef SYSTICK_H_
 #define SYSTICK_H_
 
-#include "settings.h"
 #include "stdint.h"
+#include "../settings.h"
 
 // Time between two systicks.
-#define SYSTICK_PERIOD		((float)(1 << SETTINGS_PWM_BIT_COUNT) / (float)F_CPU)
+#define SYSTICK_PERIOD		((float)(1UL << SETTINGS_PWM_BIT_COUNT) / (float)F_CPU)
 
 // Calculate the number of systicks for a given time in seconds.
 // Rounded to closest integer value.
@@ -23,13 +23,13 @@
 
 // Systick uses Timer1 for generation of a system clock.
 // Timer1 PWM		Timer interval
-// bit setting		at 20 MHz		at 16 MHz
-// 10				51.2 us			64 us
-// 11				102.4 us			128 us
-// 12				204.8 us			256 us
-// 13				409.6 us			512 us
-// 14				819.2 us			1024 us
-// 15				1638.4 us		2048 us
+// bit setting		at 20 MHz		at 16 MHz		at 8 MHz
+// 10				51.2 us			64 us			128 us
+// 11				102.4 us			128 us			256 us
+// 12				204.8 us			256 u			512 us
+// 13				409.6 us			512 us			1024 us
+// 14				819.2 us			1024 us			2048 us
+// 15				1638.4 us		2048 us			4096 us
 
 // Initialize TIMER1 overflow interrupt for systick generation.
 // The pwm_init() method must be executed before this initialization!

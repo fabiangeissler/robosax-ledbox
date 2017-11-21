@@ -10,12 +10,18 @@
 #include "avr/pgmspace.h"
 #include "util/delay.h"
 
-#include "hardware/pwm_dither.h"
-#include "hardware/pwm_hybrid.h"
-#include "hardware/pwm.h"
-#include "hardware/systick.h"
-#include "hardware/settings.h"
+#include "periphery/pwm.h"
+#include "periphery/pwm_hybrid.h"
+#include "settings.h"
+#include "periphery/systick.h"
 #include "software/brightness.h"
+#include "board/rgbled.h"
+#include "board/push.h"
+#include "board/led.h"
+#include "periphery/uart.h"
+#include "bus/csma.h"
+
+#define PUSH_DEBOUNCE	50
 
 int main()
 {
@@ -26,58 +32,103 @@ int main()
 	// Enable global interrupts
 	sei();
 
-	PORTD |= (1 << PD3);
+	// init RGB LED
+	rgb_init();
+	rgb_setcolor(COLOR_WHITE);
 
-	_delay_ms(1000);
+	systick_init();
 
-	// init PWM
-	pwm_set_ocra(0xFFFF);
-	pwm_set_ocrb(0xFFFF);
-	pwm_init();
+	//uart_init();
+	csma_init();
 
-//	systick_init();
+	// Init on board buttons and leds
+	push_init();
+	led_init();
 
-//	pwm_dither_init();
-//	pwm_dither_set(0xFFFF);
+	led_set(LED_SET | LED1);
+	led_set(LED_RESET | LED2);
 
-	pwm_hybrid_init();
-	pwm_hybrid_set(0);
-
-
-	_delay_ms(1000);
-
-	uint8_t val = 255;
-	int8_t del = -1;
-	uint16_t cval;
-//	uint32_t time = systick_getticks();
-//	uint32_t fade_ltime = time;
-
-//	pwm_top_freq_test_start();
+	uint8_t val = 0;
+	uint32_t time = systick_getticks();
+	uint32_t fade_time = time;
+	uint32_t debounce_time = time;
+	uint32_t corr[3] =  {0x8000, 0x8000, 0x8000};
+	int32_t del = 0x0000;
+	uint8_t mode = 0;
 
 	while(1)
 	{
-//		time = systick_getticks();
+		csma_loop();
 
-		_delay_ms(50);
+		time = systick_getticks();
 
+		if((time - fade_time) >= SYSTICK_TICKS_MS(50))
+		{
+//			fade_time = time;
+//
+//			//uart_puts("Das ist ein sehr langer test string!!");
+//			rgb_setcolor(color_fromhsv(val, 255, 255));
+//
+//			++val;
+		}
 
-//		if(time - fade_ltime >= SYSTICK_TICKS_MS(25))
-//		{
-//			fade_ltime = time;
+		if((time - debounce_time) >= SYSTICK_TICKS_MS(PUSH_DEBOUNCE))
+		{
+			debounce_time = time;
 
-			val += del;
+			int8_t push1, push2;
 
-			cval = pgm_read_word(&(brightness_lut[val]));
+			push_check(&push1, &push2);
 
-			if(val <= 0)
-				del = 1;
-			else if (val >= 255)
-				del = -1;
+			switch(push1)
+			{
+			case 1: // button pushed
+				del = 0x100;
+				break;
+			case -1: // button released
+				del = 0;
+				break;
+			}
 
-//			pwm_set_ocra(cval);
-//			pwm_set_ocrb(cval);
-//			pwm_dither_set(cval);
-			pwm_hybrid_set(cval);
-//		}
+			switch(push2)
+			{
+			case 1: // button pushed
+				del = -0x100;
+				break;
+			case -1: // button released
+				del = 0;
+				break;
+			}
+
+			if((push1 == 1) && (push1 == push2))
+			{
+				++mode;
+
+				switch(mode)
+				{
+				case 1:
+					rgb_setcolor(COLOR_GREEN);
+					break;
+				case 2:
+					rgb_setcolor(COLOR_BLUE);
+					break;
+				case 0:
+				default:
+					rgb_setcolor(COLOR_RED);
+					mode = 0;
+				}
+
+				_delay_ms(500);
+				rgb_setcolor(COLOR_WHITE);
+			}
+
+			corr[mode] += del;
+
+			if(del != 0)
+			{
+				rgb_setwhitecorrection(corr[0], corr[1], corr[2]);
+				rgb_setcolor(COLOR_WHITE);
+			}
+		}
 	}
 }

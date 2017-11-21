@@ -5,9 +5,9 @@
  *      Author: fabiangeissler
  */
 
-#include "pwm_hybrid.h"
+#include "../periphery/pwm_hybrid.h"
 
-#ifndef SETTINGS_PWM8_EXTENSION_DITHER
+#include "../settings.h"
 
 #include "avr/io.h"
 #include "avr/interrupt.h"
@@ -15,9 +15,9 @@
 // Hybrid software/hardware PWM simulates a higher bit PWM by keeping the output
 // level high for the needed amount of overflows and then setting it low.
 
+// Prescaler 1
 #define PWM_HYBRID_PS		((0 << CS22) | (0 << CS21) | (1 << CS20))
-#define PWM_HYBRID_BITMASK	((uint8_t)(~(0xFF << (PWM_HYBRID_BITS - 8))))
-#define PWM_HYBRID_TOP		((uint16_t)(~(0xFFFF << PWM_HYBRID_BITS)))
+#define PWM_HYBRID_BITMASK	(uint8_t)(SETTINGS_PWM_TOP >> 8)
 
 volatile uint8_t _pwm_hybrid_seton;
 volatile uint8_t _pwm_hybrid_setval;
@@ -30,8 +30,8 @@ volatile uint8_t _pwm_hybrid_cnt;
 void pwm_hybrid_init()
 {
 	// Compare channel B
-	// Fast PWM Mode (count up to 0xFF and back down)
-	TCCR2A = (1 << COM2B1) | (1 << COM2B0) | (0 << WGM21) | (1 << WGM20);
+	// Fast PWM Mode (count up to 0xFF and overflow)
+	TCCR2A = (1 << COM2B1) | (1 << COM2B0) | (1 << WGM21) | (1 << WGM20);
 
 	// Turn timer on
 	TCCR2B = PWM_HYBRID_PS;
@@ -45,8 +45,7 @@ void pwm_hybrid_init()
 
 void pwm_hybrid_set(uint16_t val)
 {
-	// Limit the compare range to the maximum bit count.
-	val = (val >> (16 - PWM_HYBRID_BITS)) & PWM_HYBRID_TOP;
+	val = (SETTINGS_PWM_TOP - val);
 
 	uint8_t valh = ((uint8_t*)(&val))[1];
 	uint8_t vall = ((uint8_t*)(&val))[0];
@@ -89,5 +88,3 @@ ISR(TIMER2_OVF_vect)
 	_pwm_hybrid_seton = seton;
 	_pwm_hybrid_setval = setval;
 }
-
-#endif

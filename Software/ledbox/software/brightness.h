@@ -8,9 +8,13 @@
 #ifndef BRIGHTNESS_H_
 #define BRIGHTNESS_H_
 
-#include "stdint.h"
-#include "avr/pgmspace.h"
+#include "../settings.h"
 
-extern const uint16_t brightness_lut[256] PROGMEM;
+#ifdef SETTINGS_BRIGHTNESS_LINEARIZATION
+	#include "stdint.h"
+	#include "avr/pgmspace.h"
+
+	extern const uint16_t brightness_lut[256] PROGMEM;
+#endif
 
 #endif /* BRIGHTNESS_H_ */

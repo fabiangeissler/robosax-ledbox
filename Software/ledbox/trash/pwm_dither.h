@@ -9,7 +9,8 @@
 #define PWM_DITHER_H_
 
 #include "stdint.h"
-#include "settings.h"
+
+#include "../periphery/settings.h"
 
 #ifdef SETTINGS_PWM8_EXTENSION_DITHER
 
