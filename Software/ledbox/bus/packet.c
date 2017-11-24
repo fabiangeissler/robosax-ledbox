@@ -22,12 +22,22 @@ uint8_t* packet_data_generate(
 	if(packet_size <= PACKET_OVERHEAD)
 		return 0;
 
-	uint16_t pdsize = packet_size - PACKET_OVERHEAD;
+	// Packet data size is minimum of data size and maximum packet data size.
+	uint16_t pdsize = min(packet_size - PACKET_OVERHEAD, data_size);
 
 	p->rxaddr = rxaddr;
 	p->txaddr = txaddr;
 	p->num = num;
 	p->size = pdsize;
+
+	// Calculate parity
+	uint8_t *end = data + pdsize;
+	uint8_t par = 0;
+
+	for(uint8_t *d = data; d < end; ++d)
+		par ^= (*d);
+
+	p->parity = par;
 	p->data = data;
 	p->crc32 = 0xFFFFFFFF;
 
@@ -55,15 +65,5 @@ void packet_command_generate(
 	((uint32_t*)(buffer + sizeof(uint16_t)))[0] = cmd_param0;
 	((uint32_t*)(buffer + sizeof(uint16_t)))[1] = cmd_param1;
 
-	p->rxaddr = rxaddr;
-	p->txaddr = txaddr;
-	p->num = 0;
-	p->size = 10;
-	p->data = buffer;
-	p->crc32 = 0xFFFFFFFF;
-
-	// Calculate packet struct CRC without data pointer and CRC field
-	p->crc32 = crc32_bytes((uint8_t*)p, PACKET_OVERHEAD - sizeof(uint32_t), p->crc32);
-	// Calculate data array CRC
-	p->crc32 = crc32_bytes(p->data, p->size, p->crc32);
+	packet_data_generate(p, rxaddr, txaddr, 0, 10, buffer, PACKET_OVERHEAD + 10);
 }

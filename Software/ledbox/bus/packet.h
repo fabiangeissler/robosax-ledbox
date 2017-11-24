@@ -22,6 +22,7 @@ typedef struct {
 	uint16_t txaddr;
 	uint16_t num;
 	uint16_t size;
+	uint8_t parity;
 	uint8_t *data;
 	uint32_t crc32;
 } PACKET;

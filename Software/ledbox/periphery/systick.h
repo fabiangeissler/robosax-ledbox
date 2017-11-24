@@ -16,7 +16,7 @@
 
 // Calculate the number of systicks for a given time in seconds.
 // Rounded to closest integer value.
-#define SYSTICK_TICKS(sec)	(uint32_t)((sec) / SYSTICK_PERIOD + 0.5)
+#define SYSTICK_TICKS(sec)	((uint32_t)((sec) / SYSTICK_PERIOD + 0.5))
 
 // SYSTICK_TICKS for milliseconds
 #define SYSTICK_TICKS_MS(ms)	SYSTICK_TICKS(ms / 1000.0)
