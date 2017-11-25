@@ -7,6 +7,10 @@
 
 #include "packet.h"
 
+#ifndef MIN
+#	define MIN(a,b)	((a < b) ? a : b)
+#endif
+
 // Reads bytes from data and generates a packet with the given size.
 // Returns a pointer to the next unread byte of data.
 uint8_t* packet_data_generate(
@@ -23,7 +27,7 @@ uint8_t* packet_data_generate(
 		return 0;
 
 	// Packet data size is minimum of data size and maximum packet data size.
-	uint16_t pdsize = min(packet_size - PACKET_OVERHEAD, data_size);
+	uint16_t pdsize = MIN(packet_size - PACKET_OVERHEAD, data_size);
 
 	p->rxaddr = rxaddr;
 	p->txaddr = txaddr;

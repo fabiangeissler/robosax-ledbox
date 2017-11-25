@@ -6,7 +6,7 @@
  */
 
 #include "csma.h"
-#include "../periphery/uart.h"
+#include "rs485.h"
 
 #include "stdlib.h"
 
@@ -70,9 +70,6 @@ void _csma_release()
 // To use this module srand must have been executed!
 void csma_init()
 {
-	// stop UART operation
-	uart_stop();
-
 	// For the implementation of collision avoidance normal port operation is needed.
 	// The communication later uses the UART peripheral.
 	// Set TX pin as output.
@@ -194,7 +191,7 @@ csma_state_prio_label:
 		// Start UART peripheral and begin transmission.
 		case CSMA_STATE_UARTINIT:
 			// Start UART peripheral.
-			uart_start();
+			rs485_start();
 			// Set timeout ticks.
 			_csma_ticks = CSMA_BYTETOTICKS;
 

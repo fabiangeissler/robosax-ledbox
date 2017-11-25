@@ -18,7 +18,6 @@
 #include "board/rgbled.h"
 #include "board/push.h"
 #include "board/led.h"
-#include "periphery/uart.h"
 #include "bus/csma.h"
 
 #define PUSH_DEBOUNCE	50
