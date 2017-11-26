@@ -18,17 +18,19 @@ enum command_type {
 };
 
 typedef struct {
-	uint16_t rxaddr;
-	uint16_t txaddr;
-	uint16_t num;
-	uint16_t size;
-	uint8_t parity;
-	uint8_t *data;
+	uint16_t rxaddr; 	// RX address first, important for detection.
+	uint16_t size;		// size is second information needed to estimate the time of the transmission
+						// which is also the time to sleep until the next transmission or possible send
+						// period.
+	uint16_t txaddr;		// Address of the sender. For requests and answers.
+	uint16_t pnum;		// Packet number, if part of a series of packets.
+	uint8_t parity;		// Parity byte for 2D parity bit error detection and correction
 	uint32_t crc32;
+	uint8_t *data;
 } PACKET;
 
 // PACKET struct size minus the size of the data array pointer
-#define PACKET_OVERHEAD (sizeof(PACKET) - sizeof(uint8_t*))
+#define PACKET_HEADERSIZE (sizeof(PACKET) - sizeof(uint8_t*))
 
 // Reads bytes from data and generates a packet with the given size.
 // Returns a pointer to the next unread byte of data.

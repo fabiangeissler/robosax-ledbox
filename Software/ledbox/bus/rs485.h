@@ -20,7 +20,8 @@ enum rs485_flag {
 	RS485_FLAG_TXERR = 0x02,		// Error in operation.
 	RS485_FLAG_PARERR = 0x04,	// Parity error occurred.
 	RS485_FLAG_TXMODE = 0x08,	// Peripheral in transmission mode.
-	RS485_FLAG_RXMODE = 0x10		// Peripheral in reception mode.
+	RS485_FLAG_RXMODE = 0x10,	// Peripheral in reception mode.
+	RS485_FLAG_FINISHED = 0x20	// Finished operation.
 };
 
 // Init buffers and UART peripheral
@@ -39,5 +40,8 @@ uint8_t* rs485_startrx(uint8_t* buf, uint16_t size);
 
 // Check if UART is still in reception or transmission
 bool rs485_running();
+
+// Return state
+uint8_t rs485_flags();
 
 #endif /* RS485_H_ */

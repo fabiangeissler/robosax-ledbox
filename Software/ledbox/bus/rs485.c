@@ -17,7 +17,7 @@
 #include "../software/ringbuffer.h"
 
 // Standard reception buffer if no other specified
-uint8_t _rs485_rx_data[SETTINGS_BUS_PACKETSIZEMAX - PACKET_OVERHEAD];
+uint8_t _rs485_rx_data[SETTINGS_BUS_PACKETSIZEMAX - PACKET_HEADERSIZE];
 // Lock for the reception buffer
 volatile uint8_t _rs485_flags;
 // RX/TX buffer pointer
@@ -46,9 +46,15 @@ void rs485_init()
 // Start UART transmission (lock pins)
 bool rs485_starttx(uint8_t* buf, uint16_t size)
 {
+	// Clear flags
+	_rs485_flags &= RS485_FLAG_RXLOCK;
+
 	// Exit if already running.
 	if(rs485_running())
+	{
+		_rs485_flags |= RS485_FLAG_TXERR;
 		return false;
+	}
 
 	// Enable transmitter and receiver, enable transmit interrupts
 	UCSR0B = (1 << RXEN0) | (1 << TXEN0) | (1 << UDRIE0) | (1 << TXCIE0) | (1 << RXCIE0);
@@ -57,12 +63,11 @@ bool rs485_starttx(uint8_t* buf, uint16_t size)
 	_rs485_addr = 0;
 	_rs485_raddr = 0;
 
+	// Set TXMODE flags
+	_rs485_flags |= RS485_FLAG_TXMODE;
+
 	// Set first transmission data byte.
 	UDR0 = buf[0];
-
-	// Set flags
-	_rs485_flags &= RS485_FLAG_RXLOCK;
-	_rs485_flags |= RS485_FLAG_TXMODE;
 
 	// Set UART buffer.
 	_rs485_buffer = buf;
@@ -92,13 +97,19 @@ uint8_t* rs485_startrx(uint8_t* buf, uint16_t size)
 	_rs485_flags &= RS485_FLAG_RXLOCK;
 	_rs485_flags |= RS485_FLAG_RXMODE;
 
-	return _rs485_buffer;
+	return (uint8_t*)_rs485_buffer;
 }
 
 // Check if UART is still in reception or transmission
 bool rs485_running()
 {
 	return (UCSR0B &= ((1 << RXEN0) | (1 << TXEN0)));
+}
+
+// Return state
+uint8_t rs485_flags()
+{
+	return _rs485_flags;
 }
 
 // RX Complete interrupt is executed after the input shift
@@ -134,8 +145,14 @@ ISR(USART_RX_vect)
 	}
 
 	if(_rs485_raddr == _rs485_size)
+	{
 		// Stop the UART RX peripheral and disable the interrupts.
 		UCSR0B &= ~((1 << RXEN0) | (1 << RXCIE0));
+
+		// Deactivate RXMODE and set FINISHED flag
+		_rs485_flags &= ~RS485_FLAG_RXMODE;
+		_rs485_flags |= RS485_FLAG_FINISHED;
+	}
 }
 
 // UDR Empty interrupt is executed when the UDR contents are
@@ -157,6 +174,11 @@ ISR(USART_UDRE_vect)
 ISR(USART_TX_vect)
 {
 	if(_rs485_addr == (_rs485_size - 1))
+	{
 		// Stop the UART peripheral and disable all interrupts.
 		UCSR0B &= ~((1 << TXEN0) | (1 << UDRIE0) | (1 << TXCIE0));
+
+		// Deactivate TXMODE. The FINISHED flag is always set in the RX ISR.
+		_rs485_flags &= ~RS485_FLAG_TXMODE;
+	}
 }

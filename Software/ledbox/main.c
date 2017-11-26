@@ -33,7 +33,7 @@ int main()
 
 	// init RGB LED
 	rgb_init();
-	rgb_setcolor(COLOR_WHITE);
+	//rgb_setcolor(COLOR_WHITE);
 
 	systick_init();
 
@@ -57,9 +57,9 @@ int main()
 
 	while(1)
 	{
-		csma_loop();
-
 		time = systick_getticks();
+
+		csma_loop(time);
 
 		if((time - fade_time) >= SYSTICK_TICKS_MS(50))
 		{

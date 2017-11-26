@@ -28,6 +28,13 @@
 #define SETTINGS_PWM_BIT_COUNT		14
 #define SETTINGS_PWM_TOP				(uint16_t)(~(0xFFFF << SETTINGS_PWM_BIT_COUNT))
 
+// IR LED Frequency in Hz
+#define SETTINGS_IR_FREQUENCY		38000
+// IR LED baud rate
+#define SETTINGS_IR_BAUD				600
+// IR LED data buffer size in byte
+#define SETTINGS_IR_BSIZE			10
+
 // Global bus UART interface baud rate setting.
 #define SETTINGS_BUS_BAUD			9600
 #define SETTINGS_BUS_PACKETSIZEMAX	128
@@ -46,5 +53,7 @@
 #define SETTINGS_BUS_TXDELAY			0.1
 // Timeout for single byte transmission.
 #define SETTINGS_BUS_BYTETIMEOUT		10
+// Timeout for single byte transmission.
+#define SETTINGS_BUS_ERRORDELAY		1
 
 #endif /* SETTINGS_H_ */

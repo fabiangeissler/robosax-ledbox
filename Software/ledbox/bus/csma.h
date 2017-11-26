@@ -59,10 +59,13 @@
 #define CSMA_TXDTICKS		SYSTICK_TICKS_MS(SETTINGS_BUS_TXDELAY)
 // Timeout for single byte transmission.
 #define CSMA_BYTETOTICKS		SYSTICK_TICKS_MS(SETTINGS_BUS_BYTETIMEOUT)
+// Timeout for single byte transmission.
+#define CSMA_ERRORTICKS		1 //SYSTICK_TICKS_MS(SETTINGS_BUS_ERRORDELAY)
 
 // Exit compilation if either of the timing values evaluates to zero.
 _Static_assert((CSMA_CSTICKS != 0), "CSMA_CSTICKS evaluates to zero!");
 _Static_assert((CSMA_LINETICKS != 0), "CSMA_LINETICKS evaluates to zero!");
+_Static_assert((CSMA_ERRORTICKS != 0), "CSMA_ERRORTICKS evaluates to zero!");
 
 // CSMA transmission states.
 // ---------------------------------------------------------------------------
@@ -73,11 +76,14 @@ enum {
 	CSMA_STATE_CA,			// In collision avoidance period.
 	CSMA_STATE_CACHECK,		// Collision avoidance line check.
 	CSMA_STATE_UARTINIT, 	// Start UART peripheral and begin transmission.
-	CSMA_STATE_PROGRESS, 	// Writing to or reading from UART peripheral.
+	CSMA_STATE_HEADER, 		// Writing or reading packet header.
+	CSMA_STATE_DATA, 		// Writing or reading packet data.
 	CSMA_STATE_ACK,			// Waiting for or sending acknowledgment,
 							// followed by either CSMA_READY or CSMA_REQUEST.
 	CSMA_STATE_REQUEST,		// Received or sent a package request, followed by CSMA_PROGRESS.
-	CSMA_STATE_ERROR,		// Fatal error like continuous collisions, defect of the bus hardware.
+	CSMA_STATE_ERROR,		// Error state after transmission or reception errors
+	CSMA_STATE_ERROR2,		// Wait state for ERROR.
+	CSMA_STATE_FATERROR,		// Fatal error like continuous collisions, defect of the bus hardware.
 							// This state is only left by reinitializing this module.
 	CSMA_STATE_RESET,		// Kicked out of transmission progress, wait for next chance.
 	CSMA_STATE_RX_TX = 0x80 	// Switch between transmission and reception mode.
@@ -101,7 +107,7 @@ enum {
 // To use this module uart must be initialized!
 void csma_init();
 
-void csma_loop();
+void csma_loop(uint32_t time);
 
 void csma_starttx(PACKET *p);
 
