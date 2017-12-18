@@ -44,7 +44,9 @@
 							</tool>
 							<tool id="de.innot.avreclipse.tool.cpplinker.app.release.610589683" name="AVR C++ Linker" superClass="de.innot.avreclipse.tool.cpplinker.app.release"/>
 							<tool id="de.innot.avreclipse.tool.archiver.winavr.base.1900963662" name="AVR Archiver" superClass="de.innot.avreclipse.tool.archiver.winavr.base"/>
-							<tool id="de.innot.avreclipse.tool.objdump.winavr.app.release.794566263" name="AVR Create Extended Listing" superClass="de.innot.avreclipse.tool.objdump.winavr.app.release"/>
+							<tool id="de.innot.avreclipse.tool.objdump.winavr.app.release.794566263" name="AVR Create Extended Listing" superClass="de.innot.avreclipse.tool.objdump.winavr.app.release">
+								<option id="de.innot.avreclipse.objdump.option.stdopts.955588236" name="Options to create Extended Listing" superClass="de.innot.avreclipse.objdump.option.stdopts" useByScannerDiscovery="false" value="-h -S" valueType="string"/>
+							</tool>
 							<tool id="de.innot.avreclipse.tool.objcopy.flash.winavr.app.release.1714755319" name="AVR Create Flash image" superClass="de.innot.avreclipse.tool.objcopy.flash.winavr.app.release"/>
 							<tool id="de.innot.avreclipse.tool.objcopy.eeprom.winavr.app.release.1084841238" name="AVR Create EEPROM image" superClass="de.innot.avreclipse.tool.objcopy.eeprom.winavr.app.release"/>
 							<tool id="de.innot.avreclipse.tool.size.winavr.app.release.834525531" name="Print Size" superClass="de.innot.avreclipse.tool.size.winavr.app.release"/>

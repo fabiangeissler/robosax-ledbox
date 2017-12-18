@@ -31,7 +31,7 @@
 // IR LED Frequency in Hz
 #define SETTINGS_IR_FREQUENCY		38000
 // IR LED baud rate
-#define SETTINGS_IR_BAUD				600
+#define SETTINGS_IR_BAUD				400
 // IR LED data buffer size in byte
 #define SETTINGS_IR_BSIZE			10
 

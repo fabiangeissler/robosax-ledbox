@@ -10,6 +10,8 @@
 #include "../periphery/irtim.h"
 #include "../software/ringbuffer.h"
 
+#include "avr/interrupt.h"
+
 #define IRLED_COUNTTOP	(uint8_t)((float)F_CPU / ((float)SETTINGS_IR_BAUD * (float)(IRTIM_TOP + 1)) - 0.5f)
 
 volatile bool _irled_disable = true;
@@ -21,10 +23,14 @@ volatile RINGBUFFER _irled_data;
 uint8_t _irled_buffer[SETTINGS_IR_BSIZE];
 
 // Initialize IR LED module.
-// The irtim module needs to be initialized before using this!
+// The irtim module needs to be initialized and global interrupts must be enabled before using this!
 void irled_init()
 {
+	// initialize data ring buffer
 	ringbuffer_init((RINGBUFFER*)&_irled_data, _irled_buffer, SETTINGS_IR_BSIZE);
+
+	// activate irtim (TIMER2) overflow interrupt
+	TIFR2 |= (1 << TOIE2);
 }
 
 void _irled_start()
@@ -65,10 +71,10 @@ uint8_t irled_write(const uint8_t * ptr, uint8_t count)
 }
 
 // Timer interrupt routine
-void irled_isr()
+ISR(TIMER2_OVF_vect)
 {
 	if(_irled_disable)
-		return;
+		return; // 17 cycles
 
 	uint8_t c = _irled_counter;
 
@@ -107,7 +113,12 @@ void irled_isr()
 		}
 
 		_irled_bitcnt = bcnt + 1;
+
+		// maximum
+		// 101 cycles
 	}
+	// else:
+	// 26/27 cycles
 
 	++c;
 

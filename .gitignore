@@ -19,7 +19,3 @@ _autosave-*
 # Exported BOM files
 *.xml
 *.csv
-
-# Pages, Numbers
-*.pages
-*.numbers
