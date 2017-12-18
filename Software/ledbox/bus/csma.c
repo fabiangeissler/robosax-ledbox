@@ -14,10 +14,13 @@
 #include "stdlib.h"
 
 uint8_t _csma_state;
-uint32_t _csma_ticks;
-uint8_t _csma_rand;
-uint8_t _csma_packet_prio;
 PACKET* _csma_packet_ref;
+
+// ISR variables
+volatile uint8_t _csma_rand;
+volatile uint8_t _csma_packet_prio;
+volatile uint8_t _csma_isrcnt;
+volatile uint32_t _csma_ticks;
 
 bool _csma_linehigh()
 {
@@ -70,6 +73,7 @@ void _csma_release()
 }
 
 // To use this module uart must be initialized!
+// To use this module irtim must be initialized!
 // To use this module srand must have been executed!
 void csma_init()
 {
@@ -88,6 +92,93 @@ void csma_init()
 	_csma_state = CSMA_STATE_READY;
 	_csma_ticks = CSMA_CSTICKS;
 }
+
+// begin collision avoidance period
+void _csma_beginCAPeriod()
+{
+	// reset counter
+	_csma_isrcnt = 0;
+
+	// calculate random timer stop index (random can be only every second interrupt to not disturb the check)
+	_csma_rand = CSMA_PRIO_MAXVAL + 2 * (rand() % SETTINGS_BUS_CASTEPS);
+
+	// TODO: activate timer
+
+}
+
+// collision avoidance slot timer interrupt (uses 38kHz IR timer)
+// if return in true, interrupt should be disabled
+bool csma_isrCA()
+{
+	uint8_t cnt = _csma_isrcnt;
+
+	// Check for priority period
+	if(cnt == _csma_packet_prio)
+	{
+		// Check if bus is already pulled (higher priority transmitter).
+		if(!_csma_linehigh())
+		{
+			// Set new state
+			_csma_state = CSMA_STATE_RESET;
+
+			goto exit_waiting;
+		}
+
+		// Pull bus low
+		_csma_pull();
+	}
+
+	// Check for random period
+	if(cnt == _csma_rand)
+	{
+		// Release line
+		_csma_release();
+	}
+
+	// Check for random period + 1
+	if(cnt == (_csma_rand + 1))
+	{
+		// Check if bus is still pulled (other higher random transmitter).
+		if(!_csma_linehigh())
+		{
+			// Set new state
+			_csma_state = CSMA_STATE_RESET;
+
+			goto exit_waiting;
+		}
+
+		// Line high -> first of the last ones who released
+		// pull line again for the later ones to go to reset after checking
+		_csma_pull();
+	}
+
+	// Check for random period + 2
+	if(cnt == (_csma_rand + 2))
+	{
+		// Release line again as anyone in this slot should have done till now.
+		_csma_release();
+
+		// Set new state, wait for pre-transmission delay
+		_csma_state = CSMA_STATE_UARTINIT;
+
+		goto exit_waiting;
+	}
+
+	_csma_isrcnt = cnt + 1;
+
+	return false;
+
+exit_waiting:
+	// Complete collision avoidance period and tx delay period
+	_csma_ticks = SYSTICK_TICKS(SETTINGS_BUS_CASTEPTIME * (CSMA_TOTALCASTEPS - cnt + 1)) + CSMA_TXDTICKS;
+
+	if(_csma_ticks == 0)
+		_csma_ticks = 1;
+
+	return true;
+}
+
+//TODO: Check all timings for plausibility
 
 void csma_loop(uint32_t ticks)
 {
@@ -174,82 +265,13 @@ void csma_loop(uint32_t ticks)
 			{
 				// Disable interrupt
 				_csma_stopint();
-
-				// Priority wait ticks
-				_csma_ticks = CSMA_PRIOTICKS * _csma_packet_prio;
 				// Resume with collision avoidance strategy
-				_csma_state = CSMA_STATE_PRIO;
+				_csma_state = CSMA_STATE_CA;
+				// Set delay ticks to longest possible. ISR controlled.
+				_csma_ticks = 0xFFFFFFFF;
+				// Start ISR
+				_csma_beginCAPeriod();
 			}
-
-			break;
-
-		// Priority period
-		// Wait for the amount of time specified by the Packet
-		// priority and check if the line is already pulled.
-		// If not, pull the bus low, else go to RESET.
-		case CSMA_STATE_PRIO:
-			// Ticks needed to complete priority period
-			_csma_ticks = (CSMA_PRIO_MAXVAL - _csma_packet_prio) * CSMA_PRIOTICKS;
-
-			// Check if bus is already pulled (higher priority transmitter).
-			if(!_csma_linehigh())
-			{
-				// Complete collision avoidance period
-				_csma_ticks += SETTINGS_BUS_CASTEPS * CSMA_CATICKS;
-				// Set new state
-				_csma_state = CSMA_STATE_RESET;
-
-				break;
-			}
-
-			// Pull bus low
-			_csma_pull();
-
-			// Generate random slot
-			_csma_rand = (rand() % SETTINGS_BUS_CASTEPS) + 1;
-			// Generate random period
-			_csma_ticks += _csma_rand * CSMA_CATICKS;
-			// Set CA as next state
-			_csma_state = CSMA_STATE_CA;
-
-			break;
-
-		// Collision avoidance period (release line)
-		// Wait for the random collision time and release the line.
-		case CSMA_STATE_CA:
-			// Release the bus.
-			_csma_release();
-			// Set period to line check
-			_csma_ticks = CSMA_LINETICKS;
-			// Set CACHECK as next state
-			_csma_state = CSMA_STATE_CACHECK;
-
-			break;
-
-		// Collision avoidance period (Check line)
-		// If the line stays low go to RESET, else go to PROCESS.
-		case CSMA_STATE_CACHECK:
-			// Check if bus is still pulled.
-			if((CSMA_RXTX_PIN & (1 << CSMA_RX)) == 0)
-			{
-				// Set remaining CS period ticks.
-				_csma_ticks = (SETTINGS_BUS_CASTEPS - _csma_rand) * CSMA_CATICKS;
-
-				// Substract line check delay if the result is greater than zero
-				if(_csma_ticks > CSMA_LINETICKS)
-					_csma_ticks -= CSMA_LINETICKS;
-				else
-					_csma_ticks = 0;
-
-				// Set RESET as next state
-				_csma_state = CSMA_STATE_RESET;
-				break;
-			}
-
-			// Set pre transmission delay.
-			_csma_ticks = CSMA_TXDTICKS;
-			// Begin transmission.
-			_csma_state = CSMA_STATE_UARTINIT;
 
 			break;
 
@@ -289,8 +311,13 @@ void csma_loop(uint32_t ticks)
 // to keep memory usage low p must point to an
 // allocated memory until the operation is completed.
 // The data is not buffered but directly read from the memory.
-void csma_starttx(PACKET *p)
+void csma_starttx(PACKET *p, uint8_t priority)
 {
+	if(priority >= SETTINGS_BUS_PRIOSTEPS)
+		_csma_packet_prio = SETTINGS_BUS_PRIOSTEPS - 1;
+	else
+		_csma_packet_prio = priority;
+
 	_csma_state = CSMA_STATE_CS;
 	_csma_packet_ref = p;
 }

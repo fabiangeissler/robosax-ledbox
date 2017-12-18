@@ -43,18 +43,6 @@
 #	define CSMA_CSTICKS		1
 #endif
 
-// Line settling delay Systick ticks.
-#ifndef SETTINGS_BUS_LINETICKS_ASSERT_ERROR_SWITCH
-#	define CSMA_LINETICKS	SYSTICK_TICKS_MS(SETTINGS_BUS_LINEDELAY)
-#else
-#	warning "CSMA_LINETICKS set to fixed value of 1."
-#	define CSMA_LINETICKS 	1
-#endif
-
-// Priority time step.
-#define CSMA_PRIOTICKS 		SYSTICK_TICKS_MS(SETTINGS_BUS_PRIODELAY)
-// Collision avoidance time step.
-#define CSMA_CATICKS 		SYSTICK_TICKS_MS(SETTINGS_BUS_CADELAY)
 // Systick ticks before starting a transmission.
 #define CSMA_TXDTICKS		SYSTICK_TICKS_MS(SETTINGS_BUS_TXDELAY)
 // Timeout for single byte transmission.
@@ -64,7 +52,6 @@
 
 // Exit compilation if either of the timing values evaluates to zero.
 _Static_assert((CSMA_CSTICKS != 0), "CSMA_CSTICKS evaluates to zero!");
-_Static_assert((CSMA_LINETICKS != 0), "CSMA_LINETICKS evaluates to zero!");
 _Static_assert((CSMA_ERRORTICKS != 0), "CSMA_ERRORTICKS evaluates to zero!");
 
 // CSMA transmission states.
@@ -72,9 +59,7 @@ _Static_assert((CSMA_ERRORTICKS != 0), "CSMA_ERRORTICKS evaluates to zero!");
 enum {
 	CSMA_STATE_READY, 		// Ready for either transmission or reception.
 	CSMA_STATE_CS,			// In carrier sense period.
-	CSMA_STATE_PRIO,			// In priority period.
 	CSMA_STATE_CA,			// In collision avoidance period.
-	CSMA_STATE_CACHECK,		// Collision avoidance line check.
 	CSMA_STATE_UARTINIT, 	// Start UART peripheral and begin transmission.
 	CSMA_STATE_HEADER, 		// Writing or reading packet header.
 	CSMA_STATE_DATA, 		// Writing or reading packet data.
@@ -93,14 +78,15 @@ enum {
 // ---------------------------------------------------------------------------
 enum {
 	CSMA_PRIO_REQUEST,		// Request priority - all requests should be done prior to a new transmission
-	CSMA_PRIO_COMMAND,		// Command priority - real time commands need to be fast
-	CSMA_PRIO_HIGH,			// Three default priority steps to choose by the user
-	CSMA_PRIO_MEDIUM,
-	CSMA_PRIO_LOW,
+	CSMA_PRIO_COMMAND		// Command priority - real time commands need to be fast
+
 };
 
 // Maximum priority value for calculations
-#define CSMA_PRIO_MAXVAL	CSMA_PRIO_LOW
+#define CSMA_PRIO_MAXVAL		(CSMA_PRIO_COMMAND + SETTINGS_BUS_USERPRIOSTEPS)
+
+// Total collision avoidance period steps
+#define CSMA_TOTALCASTEPS	(CSMA_PRIO_MAXVAL + (SETTINGS_BUS_CASTEPS * 2) + 2)
 
 // Module function headers.
 // ---------------------------------------------------------------------------
@@ -109,7 +95,7 @@ void csma_init();
 
 void csma_loop(uint32_t time);
 
-void csma_starttx(PACKET *p);
+void csma_starttx(PACKET *p, uint8_t priority);
 
 uint8_t csma_getstate();
 

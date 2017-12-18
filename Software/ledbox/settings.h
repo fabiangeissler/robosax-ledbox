@@ -16,11 +16,6 @@
 // fail.
 #define SETTINGS_BUS_CSTICKS_ASSERT_ERROR_SWITCH
 
-// In uncommented the following switch will prevent the SETTINGS_BUS_LINETICKS assert error
-// by setting the define to a fixed constant of 1. Do not use if the assertion does not
-// fail.
-#define SETTINGS_BUS_LINETICKS_ASSERT_ERROR_SWITCH
-
 // The following switch enables RGB LED brightness linearization if uncommented.
 //#define SETTINGS_BRIGHTNESS_LINEARIZATION
 
@@ -40,17 +35,17 @@
 #define SETTINGS_BUS_PACKETSIZEMAX	128
 
 // Collision avoidance steps.
-#define SETTINGS_BUS_CASTEPS 		7
+#define SETTINGS_BUS_CASTEPS 		50
+// User priority Steps.
+#define SETTINGS_BUS_USERPRIOSTEPS	5
 
 // Bus delays in milliseconds.
-// Priority step timing.
-#define SETTINGS_BUS_PRIODELAY 		0.5
-// Collision avoidance step timing.
-#define SETTINGS_BUS_CADELAY			0.5
-// Line settling delay.
-#define SETTINGS_BUS_LINEDELAY		0.1
+// Collision avoidance period step time (uses IR timer)
+#define SETTINGS_BUS_CASTEPTIME		(1.0 / (float)SETTINGS_IR_FREQUENCY)
 // Delay before starting a transmission.
-#define SETTINGS_BUS_TXDELAY			0.1
+#define SETTINGS_BUS_TXDELAY			5
+// Delay before listening.
+#define SETTINGS_BUS_RXDELAY			2
 // Timeout for single byte transmission.
 #define SETTINGS_BUS_BYTETIMEOUT		10
 // Timeout for single byte transmission.
