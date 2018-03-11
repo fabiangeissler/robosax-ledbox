@@ -1,4 +1,5 @@
 EESchema Schematic File Version 3
+LIBS:ledbox-rescue
 LIBS:power
 LIBS:device
 LIBS:linear
@@ -24,12 +25,113 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:ledbox-newsymbols
+LIBS:74xxLVCxG
+LIBS:analog_devices
+LIBS:boards
+LIBS:bridge_rectifier
+LIBS:caf
+LIBS:cirrus logic
+LIBS:eeprom
+LIBS:ft232rl
+LIBS:linear_technology
+LIBS:micrel
+LIBS:NXP Semiconductor
+LIBS:SigmaDSP
+LIBS:texas_instruments
+LIBS:tl431
+LIBS:toslink
+LIBS:worldsemi
+LIBS:ac-dc
+LIBS:Altera
+LIBS:Battery_Management
+LIBS:bbd
+LIBS:Bosch
+LIBS:brooktre
+LIBS:Connector
+LIBS:dc-dc
+LIBS:Decawave
+LIBS:Diode
+LIBS:Display
+LIBS:driver_gate
+LIBS:DSP_Microchip_DSPIC33
+LIBS:elec-unifil
+LIBS:ESD_Protection
+LIBS:Espressif
+LIBS:FPGA_Actel
+LIBS:ftdi
+LIBS:gennum
+LIBS:Graphic
+LIBS:hc11
+LIBS:infineon
+LIBS:intersil
+LIBS:ir
+LIBS:Lattice
+LIBS:LED
+LIBS:LEM
+LIBS:Logic_74xgxx
+LIBS:Logic_74xx
+LIBS:Logic_CMOS_4000
+LIBS:Logic_CMOS_IEEE
+LIBS:logic_programmable
+LIBS:Logic_TTL_IEEE
+LIBS:maxim
+LIBS:MCU_Microchip_PIC10
+LIBS:MCU_Microchip_PIC12
+LIBS:MCU_Microchip_PIC16
+LIBS:MCU_Microchip_PIC18
+LIBS:MCU_Microchip_PIC24
+LIBS:MCU_Microchip_PIC32
+LIBS:MCU_NXP_Kinetis
+LIBS:MCU_NXP_LPC
+LIBS:MCU_NXP_S08
+LIBS:MCU_Parallax
+LIBS:MCU_ST_STM8
+LIBS:MCU_ST_STM32
+LIBS:MCU_Texas_MSP430
+LIBS:Mechanical
+LIBS:modules
+LIBS:motor_drivers
+LIBS:Motor
+LIBS:nordicsemi
+LIBS:nxp
+LIBS:onsemi
+LIBS:Oscillators
+LIBS:Power_Management
+LIBS:powerint
+LIBS:pspice
+LIBS:references
+LIBS:Relay
+LIBS:RF_Bluetooth
+LIBS:rfcom
+LIBS:RFSolutions
+LIBS:Sensor_Current
+LIBS:Sensor_Humidity
+LIBS:sensors
+LIBS:silabs
+LIBS:supertex
+LIBS:Switch
+LIBS:Transformer
+LIBS:Transistor
+LIBS:triac_thyristor
+LIBS:Valve
+LIBS:video
+LIBS:wiznet
+LIBS:Worldsemi
+LIBS:Xicor
+LIBS:xilinx-artix7
+LIBS:xilinx-kintex7
+LIBS:xilinx-spartan6
+LIBS:xilinx-virtex5
+LIBS:xilinx-virtex6
+LIBS:xilinx-virtex7
+LIBS:zetex
+LIBS:Zilog
 LIBS:ledbox-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 5 5
+Sheet 4 5
 Title ""
 Date ""
 Rev ""
@@ -47,6 +149,7 @@ F 0 "C501" H 5125 4350 50  0000 L CNN
 F 1 "4u7" H 5125 4150 50  0000 L CNN
 F 2 "Capacitors_THT:CP_Radial_D5.0mm_P2.00mm" H 5138 4100 50  0001 C CNN
 F 3 "" H 5100 4250 50  0001 C CNN
+F 4 "DNP" H 5100 4250 60  0001 C CNN "Assembly"
 	1    5100 4250
 	1    0    0    -1  
 $EndComp
@@ -69,14 +172,15 @@ F 0 "J501" H 4000 3900 50  0000 C CNN
 F 1 "6.5V-12V" H 4000 3600 50  0000 C CNN
 F 2 "Connectors_Terminal_Blocks:TerminalBlock_Pheonix_MKDS1.5-2pol" H 4000 3800 50  0001 C CNN
 F 3 "" H 4000 3800 50  0001 C CNN
+F 4 "DNP" H 4000 3800 60  0001 C CNN "Assembly"
 	1    4000 3800
 	-1   0    0    -1  
 $EndComp
 $Comp
-L +12V #PWR501
+L +12V #PWR0501
 U 1 1 59DBA13C
 P 4300 3700
-F 0 "#PWR501" H 4300 3550 50  0001 C CNN
+F 0 "#PWR0501" H 4300 3550 50  0001 C CNN
 F 1 "+12V" H 4300 3840 50  0000 C CNN
 F 2 "" H 4300 3700 50  0001 C CNN
 F 3 "" H 4300 3700 50  0001 C CNN
@@ -84,10 +188,10 @@ F 3 "" H 4300 3700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR502
+L GND #PWR0502
 U 1 1 59DBA1A9
 P 4300 4000
-F 0 "#PWR502" H 4300 3750 50  0001 C CNN
+F 0 "#PWR0502" H 4300 3750 50  0001 C CNN
 F 1 "GND" H 4300 3850 50  0000 C CNN
 F 2 "" H 4300 4000 50  0001 C CNN
 F 3 "" H 4300 4000 50  0001 C CNN
@@ -95,10 +199,10 @@ F 3 "" H 4300 4000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR504
+L GND #PWR0504
 U 1 1 59DBA33D
 P 4300 4700
-F 0 "#PWR504" H 4300 4450 50  0001 C CNN
+F 0 "#PWR0504" H 4300 4450 50  0001 C CNN
 F 1 "GND" H 4300 4550 50  0000 C CNN
 F 2 "" H 4300 4700 50  0001 C CNN
 F 3 "" H 4300 4700 50  0001 C CNN
@@ -106,10 +210,10 @@ F 3 "" H 4300 4700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR503
+L +5V #PWR0503
 U 1 1 59DBA35E
 P 4300 4400
-F 0 "#PWR503" H 4300 4250 50  0001 C CNN
+F 0 "#PWR0503" H 4300 4250 50  0001 C CNN
 F 1 "+5V" H 4300 4540 50  0000 C CNN
 F 2 "" H 4300 4400 50  0001 C CNN
 F 3 "" H 4300 4400 50  0001 C CNN
@@ -124,6 +228,7 @@ F 0 "U501" H 5650 4125 50  0000 C CNN
 F 1 "AZ1117-5.0" H 5800 4125 50  0000 L CNN
 F 2 "TO_SOT_Packages_SMD:SOT-223-3Lead_TabPin2" H 5800 4250 50  0001 C CIN
 F 3 "" H 5800 4000 50  0001 C CNN
+F 4 "DNP" H 5800 4000 60  0001 C CNN "Assembly"
 	1    5800 4000
 	1    0    0    -1  
 $EndComp
@@ -161,10 +266,10 @@ F 3 "" H 6200 4250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +12V #PWR505
+L +12V #PWR0505
 U 1 1 59DBA74B
 P 5100 3900
-F 0 "#PWR505" H 5100 3750 50  0001 C CNN
+F 0 "#PWR0505" H 5100 3750 50  0001 C CNN
 F 1 "+12V" H 5100 4040 50  0000 C CNN
 F 2 "" H 5100 3900 50  0001 C CNN
 F 3 "" H 5100 3900 50  0001 C CNN
@@ -172,10 +277,10 @@ F 3 "" H 5100 3900 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR506
+L GND #PWR0506
 U 1 1 59DBA861
 P 5800 4600
-F 0 "#PWR506" H 5800 4350 50  0001 C CNN
+F 0 "#PWR0506" H 5800 4350 50  0001 C CNN
 F 1 "GND" H 5800 4450 50  0000 C CNN
 F 2 "" H 5800 4600 50  0001 C CNN
 F 3 "" H 5800 4600 50  0001 C CNN
@@ -183,10 +288,10 @@ F 3 "" H 5800 4600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR507
+L +5V #PWR0507
 U 1 1 59DBAA1E
 P 6500 3900
-F 0 "#PWR507" H 6500 3750 50  0001 C CNN
+F 0 "#PWR0507" H 6500 3750 50  0001 C CNN
 F 1 "+5V" H 6500 4040 50  0000 C CNN
 F 2 "" H 6500 3900 50  0001 C CNN
 F 3 "" H 6500 3900 50  0001 C CNN
@@ -261,7 +366,7 @@ U 1 1 59E32AE2
 P 7100 4050
 F 0 "D502" H 7100 4150 50  0000 C CNN
 F 1 "LED2" H 7100 3950 50  0000 C CNN
-F 2 "LEDs:LED_0805" H 7100 4050 50  0001 C CNN
+F 2 "LEDs:LED_D3.0mm" H 7100 4050 50  0001 C CNN
 F 3 "" H 7100 4050 50  0001 C CNN
 	1    7100 4050
 	0    -1   -1   0   
@@ -271,17 +376,17 @@ L R R501
 U 1 1 59E32AE9
 P 7100 4450
 F 0 "R501" V 7180 4450 50  0000 C CNN
-F 1 "430" V 7100 4450 50  0000 C CNN
+F 1 "2k2" V 7100 4450 50  0000 C CNN
 F 2 "Resistors_SMD:R_0805" V 7030 4450 50  0001 C CNN
 F 3 "" H 7100 4450 50  0001 C CNN
 	1    7100 4450
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR508
+L +5V #PWR0508
 U 1 1 59E32AF0
 P 7100 3800
-F 0 "#PWR508" H 7100 3650 50  0001 C CNN
+F 0 "#PWR0508" H 7100 3650 50  0001 C CNN
 F 1 "+5V" H 7100 3940 50  0000 C CNN
 F 2 "" H 7100 3800 50  0001 C CNN
 F 3 "" H 7100 3800 50  0001 C CNN
@@ -293,10 +398,10 @@ Wire Wire Line
 Wire Wire Line
 	7100 4200 7100 4300
 $Comp
-L GND #PWR509
+L GND #PWR0509
 U 1 1 59E32B42
 P 7100 4700
-F 0 "#PWR509" H 7100 4450 50  0001 C CNN
+F 0 "#PWR0509" H 7100 4450 50  0001 C CNN
 F 1 "GND" H 7100 4550 50  0000 C CNN
 F 2 "" H 7100 4700 50  0001 C CNN
 F 3 "" H 7100 4700 50  0001 C CNN

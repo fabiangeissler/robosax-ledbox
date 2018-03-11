@@ -11,6 +11,10 @@
 #ifndef CSMA_H_
 #define CSMA_H_
 
+#include "bus.h"
+
+#ifndef BUS_MASTER_SLAVE
+
 #include "packet.h"
 #include "stdbool.h"
 #include "stdint.h"
@@ -98,5 +102,7 @@ void csma_loop(uint32_t time);
 void csma_starttx(PACKET *p, uint8_t priority);
 
 uint8_t csma_getstate();
+
+#endif
 
 #endif /* CSMA_H_ */

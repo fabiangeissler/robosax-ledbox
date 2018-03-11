@@ -32,6 +32,7 @@
 
 // Global bus UART interface baud rate setting.
 #define SETTINGS_BUS_BAUD			9600
+// Maximum size of the packet including header
 #define SETTINGS_BUS_PACKETSIZEMAX	128
 
 // Collision avoidance steps.

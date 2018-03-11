@@ -18,19 +18,22 @@
 
 // Standard reception buffer if no other specified
 uint8_t _rs485_rx_data[SETTINGS_BUS_PACKETSIZEMAX - PACKET_HEADERSIZE];
+// Packet header reception buffer
+volatile PACKET _rs485_rx_packet;
+// Packet header buffer
+volatile PACKET *_rs485_packet;
 // Lock for the reception buffer
 volatile uint8_t _rs485_flags;
-// RX/TX buffer pointer
-volatile uint8_t* _rs485_buffer;
 // Buffer address counter
 volatile uint16_t _rs485_addr;
-// Buffer address counter
-volatile uint16_t _rs485_size;
-// Address of last sent byte
-volatile uint16_t _rs485_raddr;
 
 void rs485_init()
 {
+	// Set TXEN low
+	RS485_TXEN_PORT &= ~(1 << RS485_TXEN_BIT);
+	// Set TXEN as output
+	RS485_TXEN_DDR = (1 << RS485_TXEN_BIT);
+
 	// Set double rate if needed.
 	UCSR0A = (USE_2X << U2X0);
 	// Nothing enabled.
@@ -41,63 +44,67 @@ void rs485_init()
 	// Set baud rate.
 	UBRR0H = UBRRH_VALUE;
 	UBRR0L = UBRRL_VALUE;
+
+	// set data buffer in packet header
+	_rs485_rx_packet.data = _rs485_rx_data;
+
+	// Finished is default flag if no operation is running
+	_rs485_flags = RS485_FLAG_FINISHED;
 }
 
 // Start UART transmission (lock pins)
-bool rs485_starttx(uint8_t* buf, uint16_t size)
+// The data buffer p must be allocated at least until the FINISHED
+// flag is set. The data is not copied but directly read from the buffer.
+bool rs485_starttx(PACKET* p)
 {
-	// Clear flags
-	_rs485_flags &= RS485_FLAG_RXLOCK;
-
 	// Exit if already running.
 	if(rs485_running())
 	{
-		_rs485_flags |= RS485_FLAG_TXERR;
 		return false;
 	}
 
+	// Clear flags and set MODE
+	_rs485_flags = RS485_FLAG_MODE_TX1_RX0;
+
+	// Set TXEN high
+	RS485_TXEN_PORT |= (1 << RS485_TXEN_BIT);
+
 	// Enable transmitter and receiver, enable transmit interrupts
-	UCSR0B = (1 << RXEN0) | (1 << TXEN0) | (1 << UDRIE0) | (1 << TXCIE0) | (1 << RXCIE0);
+	UCSR0B = (1 << TXEN0) | (1 << UDRIE0) | (1 << TXCIE0);
 
 	// Set tx data buffer address to zero.
 	_rs485_addr = 0;
-	_rs485_raddr = 0;
-
-	// Set TXMODE flags
-	_rs485_flags |= RS485_FLAG_TXMODE;
 
 	// Set first transmission data byte.
-	UDR0 = buf[0];
+	// UDR0 = buf[0]; // does not need to be set, interrupt handler will do
 
-	// Set UART buffer.
-	_rs485_buffer = buf;
-	_rs485_size = size;
+	// Set buffer.
+	_rs485_packet = p;
 
 	return true;
 }
 
 // Start UART reception (lock pins)
-// The buf parameter sets the address to write to and can be zero
-// so the data is written to the default buffer. The size parameter
-// gives the maximum amount of bytes to be stored in the buffer.
 // Returns the address of the buffer that receives the data or zero
 // if an error occurred.
-uint8_t* rs485_startrx(uint8_t* buf, uint16_t size)
+PACKET* rs485_startrx()
 {
-	if(buf == 0)
-		_rs485_buffer = _rs485_rx_data;
-	else
-		_rs485_buffer = buf;
+	// Exit if already running.
+	if(rs485_running())
+	{
+		return 0;
+	}
 
 	// Set tx data buffer address to zero.
 	_rs485_addr = 0;
-	_rs485_raddr = 0;
 
-	// Set flags
-	_rs485_flags &= RS485_FLAG_RXLOCK;
-	_rs485_flags |= RS485_FLAG_RXMODE;
+	// Set flags (MODE = 0)
+	_rs485_flags = 0;
 
-	return (uint8_t*)_rs485_buffer;
+	// Enable receiver, enable receive interrupt
+	UCSR0B = (1 << RXEN0) | (1 << RXCIE0);
+
+	return (uint8_t*)&_rs485_rx_packet;
 }
 
 // Check if UART is still in reception or transmission
@@ -112,6 +119,26 @@ uint8_t rs485_flags()
 	return _rs485_flags;
 }
 
+// Return current buffer read/write index.
+// Can be used to retransmit only part of the data after error.
+uint16_t rs485_index()
+{
+	return _rs485_addr - 1;
+}
+
+// Cancel current operation
+void rs485_cancel()
+{
+	// Set TXEN low
+	RS485_TXEN_PORT &= ~(1 << RS485_TXEN_BIT);
+
+	// Stop the UART peripheral and disable all interrupts.
+	UCSR0B = 0;
+
+	// Error in transmission
+	_rs485_flags |= RS485_FLAG_CANCEL | RS485_FLAG_FINISHED;
+}
+
 // RX Complete interrupt is executed after the input shift
 // register contents are moved to the UDR register.
 // In transmission mode the received byte is compared to the
@@ -119,39 +146,57 @@ uint8_t rs485_flags()
 // In reception mode
 ISR(USART_RX_vect)
 {
+	uint8_t srerr = UCSR0A & ( (1 << FE0) | (1 << DOR0) | (1 << UPE0) );
 	uint8_t byte = UDR0;
 
-	if(_rs485_flags & RS485_FLAG_TXMODE)
+	if(srerr)
 	{
-		// Transmission mode.
-		if(byte != _rs485_buffer[_rs485_raddr])
-		{
-			// Error in transmission
-			_rs485_flags |= RS485_FLAG_TXERR;
-			// Stop the UART peripheral and disable all interrupts.
-			UCSR0B = 0;
-		}
+		// Stop the UART peripheral and disable all interrupts.
+		UCSR0B = 0;
 
-		// Increment last transmitted address.
-		++_rs485_raddr;
+		// Error in transmission
+		if(srerr & (1 << FE0))
+			_rs485_flags |= RS485_FLAG_RX_FRAME_ERR;
+
+		if(srerr & (1 << DOR0))
+			_rs485_flags |= RS485_FLAG_RX_OVERRUN;
+
+		if(srerr & (1 << UPE0))
+			_rs485_flags |= RS485_FLAG_RX_PARITY_ERR;
+
+		// Finished
+		_rs485_flags |= RS485_FLAG_FINISHED;
 	}
-	else if(_rs485_flags & RS485_FLAG_RXMODE)
+
+	if(_rs485_flags & RS485_FLAG_HEAD)
 	{
-		// Reception mode
-		_rs485_buffer[_rs485_raddr] = byte;
+		_rs485_rx_packet.data[_rs485_addr] = byte;
 
 		// Increment address.
-		++_rs485_raddr;
+		++_rs485_addr;
+
+		// Buffer filled or entirely read
+		if(_rs485_addr == _rs485_rx_packet.size)
+		{
+			// Stop the UART RX peripheral and disable the interrupt.
+			UCSR0B &= ~((1 << RXEN0) | (1 << RXCIE0));
+
+			// Set FINISHED flag
+			_rs485_flags |= RS485_FLAG_FINISHED;
+		}
 	}
-
-	if(_rs485_raddr == _rs485_size)
+	else
 	{
-		// Stop the UART RX peripheral and disable the interrupts.
-		UCSR0B &= ~((1 << RXEN0) | (1 << RXCIE0));
+		((char*)&_rs485_rx_packet)[_rs485_addr] = byte;
 
-		// Deactivate RXMODE and set FINISHED flag
-		_rs485_flags &= ~RS485_FLAG_RXMODE;
-		_rs485_flags |= RS485_FLAG_FINISHED;
+		// Increment address.
+		++_rs485_addr;
+
+		if(_rs485_addr == PACKET_HEADERSIZE)
+		{
+			_rs485_addr = 0;
+			_rs485_flags |= RS485_FLAG_HEAD;
+		}
 	}
 }
 
@@ -161,11 +206,31 @@ ISR(USART_RX_vect)
 // A new byte of data is loaded into the UDR.
 ISR(USART_UDRE_vect)
 {
-	// Increment buffer address.
-	++_rs485_addr;
+	if(_rs485_flags & RS485_FLAG_HEAD)
+	{
+		if(_rs485_addr < _rs485_packet->size)
+		{
+			// Load new byte.
+			UDR0 = _rs485_packet->data[_rs485_addr];
+		}
 
-	// Load new byte.
-	UDR0 = _rs485_buffer[_rs485_addr];
+		// Increment buffer address.
+		++_rs485_addr;
+	}
+	else
+	{
+		// Load new byte.
+		UDR0 = ((char*)_rs485_packet)[_rs485_addr];
+
+		// Increment buffer address.
+		++_rs485_addr;
+
+		if(_rs485_addr == PACKET_HEADERSIZE)
+		{
+			_rs485_addr = 0;
+			_rs485_flags |= RS485_FLAG_HEAD;
+		}
+	}
 }
 
 // TX Complete interrupt is executed when all bits in the
@@ -173,12 +238,15 @@ ISR(USART_UDRE_vect)
 // Stop the UART peripheral if all data has been sent.
 ISR(USART_TX_vect)
 {
-	if(_rs485_addr == (_rs485_size - 1))
+	if((_rs485_addr == _rs485_packet->size) && (_rs485_flags & RS485_FLAG_HEAD))
 	{
+		// Set TXEN low
+		RS485_TXEN_PORT &= ~(1 << RS485_TXEN_BIT);
+
 		// Stop the UART peripheral and disable all interrupts.
 		UCSR0B &= ~((1 << TXEN0) | (1 << UDRIE0) | (1 << TXCIE0));
 
-		// Deactivate TXMODE. The FINISHED flag is always set in the RX ISR.
-		_rs485_flags &= ~RS485_FLAG_TXMODE;
+		// Deactivate TXMODE. The FINISHED flag is always set later in the RX ISR.
+		_rs485_flags &= ~RS485_FLAG_MODE_TX1_RX0;
 	}
 }

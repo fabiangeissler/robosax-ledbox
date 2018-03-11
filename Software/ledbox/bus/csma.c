@@ -7,6 +7,10 @@
 
 // TODO: Replace Systick by Timer3 running at 30-60kHz for CSMA timings
 
+#include "bus.h"
+
+#ifndef BUS_MASTER_SLAVE
+
 #include "csma.h"
 #include "rs485.h"
 #include "../board/led.h"
@@ -107,7 +111,7 @@ void _csma_beginCAPeriod()
 }
 
 // collision avoidance slot timer interrupt (uses 38kHz IR timer)
-// if return in true, interrupt should be disabled
+// if return is true, interrupt should be disabled
 bool csma_isrCA()
 {
 	uint8_t cnt = _csma_isrcnt;
@@ -182,13 +186,6 @@ exit_waiting:
 
 void csma_loop(uint32_t ticks)
 {
-	if(CSMA_RXTX_PIN & (1 << CSMA_RX))
-		led_set(LED1 | LED2 | LED_SET);
-	else
-		led_set(LED1 | LED2 | LED_RESET);
-
-	return;
-
 	static uint32_t lticks = 0;
 
 	// Periphery controlled states
@@ -313,8 +310,8 @@ void csma_loop(uint32_t ticks)
 // The data is not buffered but directly read from the memory.
 void csma_starttx(PACKET *p, uint8_t priority)
 {
-	if(priority >= SETTINGS_BUS_PRIOSTEPS)
-		_csma_packet_prio = SETTINGS_BUS_PRIOSTEPS - 1;
+	if(priority > CSMA_PRIO_MAXVAL)
+		_csma_packet_prio = CSMA_PRIO_MAXVAL;
 	else
 		_csma_packet_prio = priority;
 
@@ -326,3 +323,5 @@ uint8_t csma_getstate()
 {
 	return _csma_state;
 }
+
+#endif
