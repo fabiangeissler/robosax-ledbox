@@ -3,7 +3,7 @@
   (general
     (thickness 1.6)
     (drawings 4)
-    (tracks 595)
+    (tracks 593)
     (zones 0)
     (modules 101)
     (nets 52)
@@ -34,7 +34,7 @@
   )
 
   (setup
-    (last_trace_width 0.2)
+    (last_trace_width 1)
     (user_trace_width 0.2)
     (user_trace_width 0.3)
     (user_trace_width 0.4)
@@ -71,7 +71,7 @@
     (aux_axis_origin 0 0)
     (visible_elements FFFFFF7F)
     (pcbplotparams
-      (layerselection 0x010fc_ffffffff)
+      (layerselection 0x00000_ffffffff)
       (usegerberextensions false)
       (usegerberattributes true)
       (usegerberadvancedattributes true)
@@ -92,11 +92,11 @@
       (plotinvisibletext false)
       (padsonsilk false)
       (subtractmaskfromsilk false)
-      (outputformat 1)
+      (outputformat 4)
       (mirror false)
-      (drillshape 1)
+      (drillshape 0)
       (scaleselection 1)
-      (outputdirectory ""))
+      (outputdirectory output))
   )
 
   (net 0 "")
@@ -654,7 +654,7 @@
   )
 
   (module LOGO (layer F.Cu) (tedit 0) (tstamp 5AFB05C6)
-    (at 139.065 56.515)
+    (at 140 56)
     (fp_text reference G*** (at 0 0) (layer F.SilkS) hide
       (effects (font (thickness 0.3)))
     )
@@ -4513,6 +4513,8 @@
   (gr_line (start 180 50) (end 180 100) (layer Edge.Cuts) (width 0.1))
   (gr_line (start 100 50) (end 180 50) (layer Edge.Cuts) (width 0.1))
 
+  (segment (start 118.745 57.15) (end 112.395 63.5) (width 1) (layer F.Cu) (net 1))
+  (segment (start 112.395 63.5) (end 106.045 63.5) (width 1) (layer F.Cu) (net 1))
   (segment (start 151.13 83.185) (end 149.86 84.455) (width 0.2) (layer F.Cu) (net 1))
   (segment (start 149.86 84.455) (end 149.86 85.725) (width 0.2) (layer F.Cu) (net 1))
   (segment (start 133.985 66.105) (end 133.985 66.04) (width 0.2) (layer F.Cu) (net 1))
@@ -4612,10 +4614,6 @@
   (segment (start 119.38 94.93) (end 124.46 94.93) (width 1) (layer F.Cu) (net 1))
   (segment (start 114.3 94.93) (end 119.38 94.93) (width 1) (layer F.Cu) (net 1))
   (segment (start 106.045 63.5) (end 103.505 63.5) (width 1) (layer F.Cu) (net 1))
-  (segment (start 117.881401 63.093599) (end 117.475 63.5) (width 1) (layer F.Cu) (net 1))
-  (segment (start 117.475 63.5) (end 106.045 63.5) (width 1) (layer F.Cu) (net 1))
-  (segment (start 118.745 57.15) (end 117.881401 58.013599) (width 1) (layer F.Cu) (net 1))
-  (segment (start 117.881401 58.013599) (end 117.881401 63.093599) (width 1) (layer F.Cu) (net 1))
   (segment (start 117.78901 70.510583) (end 116.912107 69.63368) (width 0.5) (layer F.Cu) (net 1))
   (segment (start 116.912107 69.63368) (end 116.912107 68.652107) (width 0.5) (layer F.Cu) (net 1))
   (segment (start 122.102361 78.218047) (end 123.117893 79.233579) (width 0.5) (layer F.Cu) (net 1))
