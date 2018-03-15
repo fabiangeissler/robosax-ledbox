@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 38)
+    (drawings 39)
     (tracks 714)
     (zones 0)
     (modules 102)
@@ -11,8 +11,8 @@
 
   (page A4)
   (layers
-    (0 F.Cu signal)
-    (31 B.Cu signal)
+    (0 F.Cu signal hide)
+    (31 B.Cu signal hide)
     (32 B.Adhes user)
     (33 F.Adhes user)
     (34 B.Paste user)
@@ -4847,6 +4847,9 @@
     )
   )
 
+  (gr_text "LED Box V.4\nF. Geissler\n15.03.2018" (at 117.1575 61.7855) (layer F.SilkS)
+    (effects (font (size 1.2 1.2) (thickness 0.25)))
+  )
   (gr_line (start 171.323 84.582) (end 174.117 84.582) (layer F.SilkS) (width 0.2))
   (gr_line (start 173.863 86.1695) (end 176.657 86.1695) (layer F.SilkS) (width 0.2))
   (gr_line (start 171.323 87.884) (end 174.117 87.884) (layer F.SilkS) (width 0.2))
