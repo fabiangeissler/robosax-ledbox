@@ -1,0 +1,893 @@
+EESchema Schematic File Version 3
+LIBS:ledbox-rescue
+LIBS:power
+LIBS:device
+LIBS:linear
+LIBS:regul
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:ledbox-newsymbols
+LIBS:74xxLVCxG
+LIBS:analog_devices
+LIBS:boards
+LIBS:bridge_rectifier
+LIBS:caf
+LIBS:cirrus logic
+LIBS:eeprom
+LIBS:ft232rl
+LIBS:linear_technology
+LIBS:micrel
+LIBS:NXP Semiconductor
+LIBS:SigmaDSP
+LIBS:texas_instruments
+LIBS:tl431
+LIBS:toslink
+LIBS:worldsemi
+LIBS:ac-dc
+LIBS:Altera
+LIBS:Battery_Management
+LIBS:bbd
+LIBS:Bosch
+LIBS:brooktre
+LIBS:Connector
+LIBS:dc-dc
+LIBS:Decawave
+LIBS:Diode
+LIBS:Display
+LIBS:driver_gate
+LIBS:DSP_Microchip_DSPIC33
+LIBS:elec-unifil
+LIBS:ESD_Protection
+LIBS:Espressif
+LIBS:FPGA_Actel
+LIBS:ftdi
+LIBS:gennum
+LIBS:Graphic
+LIBS:hc11
+LIBS:infineon
+LIBS:intersil
+LIBS:ir
+LIBS:Lattice
+LIBS:LED
+LIBS:LEM
+LIBS:Logic_74xgxx
+LIBS:Logic_74xx
+LIBS:Logic_CMOS_4000
+LIBS:Logic_CMOS_IEEE
+LIBS:logic_programmable
+LIBS:Logic_TTL_IEEE
+LIBS:maxim
+LIBS:MCU_Microchip_PIC10
+LIBS:MCU_Microchip_PIC12
+LIBS:MCU_Microchip_PIC16
+LIBS:MCU_Microchip_PIC18
+LIBS:MCU_Microchip_PIC24
+LIBS:MCU_Microchip_PIC32
+LIBS:MCU_NXP_Kinetis
+LIBS:MCU_NXP_LPC
+LIBS:MCU_NXP_S08
+LIBS:MCU_Parallax
+LIBS:MCU_ST_STM8
+LIBS:MCU_ST_STM32
+LIBS:MCU_Texas_MSP430
+LIBS:Mechanical
+LIBS:modules
+LIBS:motor_drivers
+LIBS:Motor
+LIBS:nordicsemi
+LIBS:nxp
+LIBS:onsemi
+LIBS:Oscillators
+LIBS:Power_Management
+LIBS:powerint
+LIBS:pspice
+LIBS:references
+LIBS:Relay
+LIBS:RF_Bluetooth
+LIBS:rfcom
+LIBS:RFSolutions
+LIBS:Sensor_Current
+LIBS:Sensor_Humidity
+LIBS:sensors
+LIBS:silabs
+LIBS:supertex
+LIBS:Switch
+LIBS:Transformer
+LIBS:Transistor
+LIBS:triac_thyristor
+LIBS:Valve
+LIBS:video
+LIBS:wiznet
+LIBS:Worldsemi
+LIBS:Xicor
+LIBS:xilinx-artix7
+LIBS:xilinx-kintex7
+LIBS:xilinx-spartan6
+LIBS:xilinx-virtex5
+LIBS:xilinx-virtex6
+LIBS:xilinx-virtex7
+LIBS:zetex
+LIBS:Zilog
+LIBS:ledbox-cache
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 2 5
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L LED D202
+U 1 1 5ABDE652
+P 2700 2750
+F 0 "D202" H 2691 2966 50  0000 C CNN
+F 1 "LED" H 2691 2875 50  0000 C CNN
+F 2 "LEDs:LED_D3.0mm" H 2700 2750 50  0001 C CNN
+F 3 "~" H 2700 2750 50  0001 C CNN
+	1    2700 2750
+	0    1    -1   0   
+$EndComp
+$Comp
+L R R202
+U 1 1 5ABDE659
+P 2700 3150
+F 0 "R202" V 2493 3150 50  0000 C CNN
+F 1 "1k" V 2584 3150 50  0000 C CNN
+F 2 "Resistors_SMD:R_0805" V 2630 3150 50  0001 C CNN
+F 3 "" H 2700 3150 50  0001 C CNN
+	1    2700 3150
+	-1   0    0    1   
+$EndComp
+$Comp
+L +5V #PWR0205
+U 1 1 5ABDE660
+P 2700 2500
+F 0 "#PWR0205" H 2700 2350 50  0001 C CNN
+F 1 "+5V" V 2715 2628 50  0000 L CNN
+F 2 "" H 2700 2500 50  0001 C CNN
+F 3 "" H 2700 2500 50  0001 C CNN
+	1    2700 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Test_Point TP208
+U 1 1 5ABDE66D
+P 8550 4500
+F 0 "TP208" H 8608 4620 50  0000 L CNN
+F 1 "LED OUT" H 8608 4529 50  0000 L CNN
+F 2 "Test:TEST_10" H 8750 4500 50  0001 C CNN
+F 3 "~" H 8750 4500 50  0001 C CNN
+	1    8550 4500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Test_Point TP209
+U 1 1 5ABDE682
+P 8550 5400
+F 0 "TP209" H 8608 5520 50  0000 L CNN
+F 1 "ADD BTN" H 8608 5429 50  0000 L CNN
+F 2 "Test:TEST_10" H 8750 5400 50  0001 C CNN
+F 3 "~" H 8750 5400 50  0001 C CNN
+	1    8550 5400
+	-1   0    0    1   
+$EndComp
+$Comp
+L C C201
+U 1 1 5ABDEC91
+P 2100 1550
+F 0 "C201" H 2215 1596 50  0000 L CNN
+F 1 "100n" H 2215 1505 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0805" H 2138 1400 50  0001 C CNN
+F 3 "" H 2100 1550 50  0001 C CNN
+	1    2100 1550
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C202
+U 1 1 5ABDECE9
+P 2600 1550
+F 0 "C202" H 2715 1596 50  0000 L CNN
+F 1 "100n" H 2715 1505 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0805" H 2638 1400 50  0001 C CNN
+F 3 "" H 2600 1550 50  0001 C CNN
+	1    2600 1550
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C203
+U 1 1 5ABDED28
+P 3100 1550
+F 0 "C203" H 3215 1596 50  0000 L CNN
+F 1 "100n" H 3215 1505 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0805" H 3138 1400 50  0001 C CNN
+F 3 "" H 3100 1550 50  0001 C CNN
+	1    3100 1550
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C204
+U 1 1 5ABDED6D
+P 3600 1550
+F 0 "C204" H 3715 1596 50  0000 L CNN
+F 1 "100n" H 3715 1505 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0805" H 3638 1400 50  0001 C CNN
+F 3 "" H 3600 1550 50  0001 C CNN
+	1    3600 1550
+	1    0    0    -1  
+$EndComp
+Text HLabel 9100 5300 2    60   Output ~ 0
+BTN_DATA_OUT
+Text HLabel 6200 4700 0    60   Input ~ 0
+LED_DATA_IN
+Text HLabel 9100 4900 2    60   Output ~ 0
+LED_DATA_OUT
+$Comp
+L +5V #PWR0202
+U 1 1 5ABE989C
+P 2100 1200
+F 0 "#PWR0202" H 2100 1050 50  0001 C CNN
+F 1 "+5V" H 2115 1373 50  0000 C CNN
+F 2 "" H 2100 1200 50  0001 C CNN
+F 3 "" H 2100 1200 50  0001 C CNN
+	1    2100 1200
+	1    0    0    -1  
+$EndComp
+$Comp
+L VCC #PWR0204
+U 1 1 5ABE9B92
+P 2600 1200
+F 0 "#PWR0204" H 2600 1050 50  0001 C CNN
+F 1 "VCC" H 2617 1373 50  0000 C CNN
+F 2 "" H 2600 1200 50  0001 C CNN
+F 3 "" H 2600 1200 50  0001 C CNN
+	1    2600 1200
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR0203
+U 1 1 5ABE9C49
+P 2100 1900
+F 0 "#PWR0203" H 2100 1650 50  0001 C CNN
+F 1 "GND" H 2105 1727 50  0000 C CNN
+F 2 "" H 2100 1900 50  0001 C CNN
+F 3 "" H 2100 1900 50  0001 C CNN
+	1    2100 1900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Test_Point TP201
+U 1 1 5ABEE97C
+P 6350 4500
+F 0 "TP201" H 6408 4620 50  0000 L CNN
+F 1 "LED IN" H 6408 4529 50  0000 L CNN
+F 2 "Test:TEST_10" H 6550 4500 50  0001 C CNN
+F 3 "~" H 6550 4500 50  0001 C CNN
+	1    6350 4500
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74LS126 U204
+U 5 1 5AC89854
+P 10600 2400
+F 0 "U204" H 10830 2446 50  0000 L CNN
+F 1 "74LS126" H 10830 2355 50  0000 L CNN
+F 2 "Housings_DIP:DIP-14_W7.62mm_LongPads" H 10600 2400 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS126" H 10600 2400 50  0001 C CNN
+	5    10600 2400
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74LS175 U202
+U 1 1 5AC8B899
+P 7400 5100
+F 0 "U202" H 7600 5750 50  0000 C CNN
+F 1 "74LS175" H 7600 5650 50  0000 C CNN
+F 2 "Housings_DIP:DIP-16_W7.62mm_LongPads" H 7400 5100 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS175" H 7400 5100 50  0001 C CNN
+	1    7400 5100
+	1    0    0    -1  
+$EndComp
+Text HLabel 6750 5500 0    60   Input ~ 0
+CLK
+$Comp
+L GND #PWR0213
+U 1 1 5AD198A4
+P 7400 6000
+F 0 "#PWR0213" H 7400 5750 50  0001 C CNN
+F 1 "GND" H 7405 5827 50  0000 C CNN
+F 2 "" H 7400 6000 50  0001 C CNN
+F 3 "" H 7400 6000 50  0001 C CNN
+	1    7400 6000
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR0212
+U 1 1 5AD198ED
+P 7400 4300
+F 0 "#PWR0212" H 7400 4150 50  0001 C CNN
+F 1 "+5V" H 7415 4473 50  0000 C CNN
+F 2 "" H 7400 4300 50  0001 C CNN
+F 3 "" H 7400 4300 50  0001 C CNN
+	1    7400 4300
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR0211
+U 1 1 5AD19BDC
+P 6400 5550
+F 0 "#PWR0211" H 6400 5400 50  0001 C CNN
+F 1 "+5V" H 6415 5723 50  0000 C CNN
+F 2 "" H 6400 5550 50  0001 C CNN
+F 3 "" H 6400 5550 50  0001 C CNN
+	1    6400 5550
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR0214
+U 1 1 5AD1BB99
+P 10600 1700
+F 0 "#PWR0214" H 10600 1550 50  0001 C CNN
+F 1 "+5V" H 10615 1873 50  0000 C CNN
+F 2 "" H 10600 1700 50  0001 C CNN
+F 3 "" H 10600 1700 50  0001 C CNN
+	1    10600 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR0215
+U 1 1 5AD1BC7D
+P 10600 3100
+F 0 "#PWR0215" H 10600 2850 50  0001 C CNN
+F 1 "GND" H 10605 2927 50  0000 C CNN
+F 2 "" H 10600 3100 50  0001 C CNN
+F 3 "" H 10600 3100 50  0001 C CNN
+	1    10600 3100
+	1    0    0    -1  
+$EndComp
+$Sheet
+S 3900 4800 1200 600 
+U 5AD3C598
+F0 "button_mux" 60
+F1 "button_mux.sch" 60
+F2 "BTN_DATA_IN" I L 3900 5000 60 
+F3 "BTN_LOAD" I L 3900 5200 60 
+F4 "BTN_OUT" O R 5100 5100 60 
+$EndSheet
+$Sheet
+S 3900 5700 1200 600 
+U 5AD3E3F7
+F0 "button_mux_add" 60
+F1 "button_mux.sch" 60
+F2 "BTN_DATA_IN" I L 3900 5900 60 
+F3 "BTN_LOAD" I L 3900 6100 60 
+F4 "BTN_OUT" O R 5100 6000 60 
+$EndSheet
+Text Label 5200 2800 0    60   ~ 0
+LED_INDICATOR_ADD
+Text Label 5200 2600 0    60   ~ 0
+LED_INDICATOR
+$Comp
+L LED D201
+U 1 1 5AD4369A
+P 1600 2750
+F 0 "D201" H 1591 2966 50  0000 C CNN
+F 1 "LED" H 1591 2875 50  0000 C CNN
+F 2 "LEDs:LED_D3.0mm" H 1600 2750 50  0001 C CNN
+F 3 "~" H 1600 2750 50  0001 C CNN
+	1    1600 2750
+	0    1    -1   0   
+$EndComp
+$Comp
+L R R201
+U 1 1 5AD436A1
+P 1600 3150
+F 0 "R201" V 1393 3150 50  0000 C CNN
+F 1 "1k" V 1484 3150 50  0000 C CNN
+F 2 "Resistors_SMD:R_0805" V 1530 3150 50  0001 C CNN
+F 3 "" H 1600 3150 50  0001 C CNN
+	1    1600 3150
+	-1   0    0    1   
+$EndComp
+$Comp
+L +5V #PWR0201
+U 1 1 5AD436A8
+P 1600 2500
+F 0 "#PWR0201" H 1600 2350 50  0001 C CNN
+F 1 "+5V" V 1615 2628 50  0000 L CNN
+F 2 "" H 1600 2500 50  0001 C CNN
+F 3 "" H 1600 2500 50  0001 C CNN
+	1    1600 2500
+	1    0    0    -1  
+$EndComp
+Text Label 900  3400 0    60   ~ 0
+LED_INDICATOR
+Text Label 1800 3400 0    60   ~ 0
+LED_INDICATOR_ADD
+$Comp
+L 74LS175 U201
+U 1 1 5AD440EC
+P 4600 2900
+F 0 "U201" H 4800 3550 50  0000 C CNN
+F 1 "74LS175" H 4800 3450 50  0000 C CNN
+F 2 "Housings_DIP:DIP-16_W7.62mm_LongPads" H 4600 2900 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS175" H 4600 2900 50  0001 C CNN
+	1    4600 2900
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR0209
+U 1 1 5AD45084
+P 4600 2100
+F 0 "#PWR0209" H 4600 1950 50  0001 C CNN
+F 1 "+5V" H 4615 2273 50  0000 C CNN
+F 2 "" H 4600 2100 50  0001 C CNN
+F 3 "" H 4600 2100 50  0001 C CNN
+	1    4600 2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR0210
+U 1 1 5AD4518E
+P 4600 3800
+F 0 "#PWR0210" H 4600 3550 50  0001 C CNN
+F 1 "GND" H 4605 3627 50  0000 C CNN
+F 2 "" H 4600 3800 50  0001 C CNN
+F 3 "" H 4600 3800 50  0001 C CNN
+	1    4600 3800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Jumper_NC_Small JP201
+U 1 1 5AD4769E
+P 8800 4700
+F 0 "JP201" H 8600 4750 50  0000 L CNN
+F 1 "Single Out" H 8600 4650 50  0000 L CNN
+F 2 "SMD_Jumper:Jumper_SMD_02" H 8800 4700 50  0001 C CNN
+F 3 "" H 8800 4700 50  0001 C CNN
+	1    8800 4700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Jumper_NC_Small JP202
+U 1 1 5AD47AD7
+P 8800 4900
+F 0 "JP202" H 8600 4950 50  0000 L CNN
+F 1 "Add Out" H 8600 4850 50  0000 L CNN
+F 2 "SMD_Jumper:Jumper_SMD_02" H 8800 4900 50  0001 C CNN
+F 3 "" H 8800 4900 50  0001 C CNN
+	1    8800 4900
+	1    0    0    -1  
+$EndComp
+Text Label 7950 4700 0    60   ~ 0
+LED_OUT
+Text Label 6450 4900 0    60   ~ 0
+LED_OUT
+Text Label 7950 4900 0    60   ~ 0
+LED_OUT_ADD
+Text Label 3400 2500 0    60   ~ 0
+LED_OUT
+Text Label 3400 2700 0    60   ~ 0
+LED_OUT_ADD
+Text HLabel 4000 3300 0    60   Input ~ 0
+LED_LOAD
+$Comp
+L +5V #PWR0206
+U 1 1 5AD4CDEE
+P 3400 3350
+F 0 "#PWR0206" H 3400 3200 50  0001 C CNN
+F 1 "+5V" H 3415 3523 50  0000 C CNN
+F 2 "" H 3400 3350 50  0001 C CNN
+F 3 "" H 3400 3350 50  0001 C CNN
+	1    3400 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR0207
+U 1 1 5AD4D4F5
+P 4000 2900
+F 0 "#PWR0207" H 4000 2650 50  0001 C CNN
+F 1 "GND" H 4005 2727 50  0000 C CNN
+F 2 "" H 4000 2900 50  0001 C CNN
+F 3 "" H 4000 2900 50  0001 C CNN
+	1    4000 2900
+	0    1    1    0   
+$EndComp
+$Comp
+L GND #PWR0208
+U 1 1 5AD4D637
+P 4000 3100
+F 0 "#PWR0208" H 4000 2850 50  0001 C CNN
+F 1 "GND" H 4005 2927 50  0000 C CNN
+F 2 "" H 4000 3100 50  0001 C CNN
+F 3 "" H 4000 3100 50  0001 C CNN
+	1    4000 3100
+	0    1    1    0   
+$EndComp
+Text HLabel 6300 1700 0    60   Input ~ 0
+IR_CLK
+Text Label 7950 5100 0    60   ~ 0
+BTN_OUT
+Text Label 3100 5900 0    60   ~ 0
+BTN_OUT
+Text HLabel 3100 5000 0    60   Input ~ 0
+BTN_DATA_IN
+$Comp
+L Jumper_NC_Small JP203
+U 1 1 5AD65F58
+P 8800 5100
+F 0 "JP203" H 8600 5150 50  0000 L CNN
+F 1 "Single In" H 8600 5050 50  0000 L CNN
+F 2 "SMD_Jumper:Jumper_SMD_02" H 8800 5100 50  0001 C CNN
+F 3 "" H 8800 5100 50  0001 C CNN
+	1    8800 5100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Jumper_NC_Small JP204
+U 1 1 5AD65FD4
+P 8800 5300
+F 0 "JP204" H 8600 5350 50  0000 L CNN
+F 1 "Add In" H 8600 5250 50  0000 L CNN
+F 2 "SMD_Jumper:Jumper_SMD_02" H 8800 5300 50  0001 C CNN
+F 3 "" H 8800 5300 50  0001 C CNN
+	1    8800 5300
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74LS00 U?
+U 5 1 5AD6DF83
+P 9800 2400
+AR Path="/5ABDE275/5AD3C598/5AD6DF83" Ref="U?"  Part="1" 
+AR Path="/5ABDE275/5AD3E3F7/5AD6DF83" Ref="U?"  Part="1" 
+AR Path="/5ABDE275/5AD6DF83" Ref="U203"  Part="5" 
+F 0 "U203" H 10030 2446 50  0000 L CNN
+F 1 "74LS00" H 10030 2355 50  0000 L CNN
+F 2 "Housings_DIP:DIP-14_W7.62mm_LongPads" H 9800 2400 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74ls00" H 9800 2400 50  0001 C CNN
+	5    9800 2400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Test_Point TP206
+U 1 1 5AD7098B
+P 8300 1700
+F 0 "TP206" H 8358 1820 50  0000 L CNN
+F 1 "Test_Point" H 8358 1729 50  0000 L CNN
+F 2 "Test:TEST_10" H 8500 1700 50  0001 C CNN
+F 3 "~" H 8500 1700 50  0001 C CNN
+	1    8300 1700
+	1    0    0    -1  
+$EndComp
+Text HLabel 8400 1800 2    60   Output ~ 0
+IR_LED
+$Comp
+L Test_Point TP203
+U 1 1 5AD70994
+P 7100 2000
+F 0 "TP203" H 7158 2120 50  0000 L CNN
+F 1 "Test_Point" H 7158 2029 50  0000 L CNN
+F 2 "Test:TEST_10" H 7300 2000 50  0001 C CNN
+F 3 "~" H 7300 2000 50  0001 C CNN
+	1    7100 2000
+	-1   0    0    1   
+$EndComp
+$Comp
+L Test_Point TP202
+U 1 1 5AD709A6
+P 7100 1600
+F 0 "TP202" H 7158 1720 50  0000 L CNN
+F 1 "Test_Point" H 7158 1629 50  0000 L CNN
+F 2 "Test:TEST_10" H 7300 1600 50  0001 C CNN
+F 3 "~" H 7300 1600 50  0001 C CNN
+	1    7100 1600
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74LS00 U?
+U 1 1 5AD709AF
+P 7900 1800
+AR Path="/5ABDE275/5AD3C598/5AD709AF" Ref="U?"  Part="1" 
+AR Path="/5ABDE275/5AD3E3F7/5AD709AF" Ref="U?"  Part="1" 
+AR Path="/5ABDE275/5AD4EFCE/5AD709AF" Ref="U?"  Part="1" 
+AR Path="/5ABDE275/5AD709AF" Ref="U203"  Part="1" 
+F 0 "U203" H 7900 2125 50  0000 C CNN
+F 1 "74LS00" H 7900 2034 50  0000 C CNN
+F 2 "Housings_DIP:DIP-14_W7.62mm_LongPads" H 7900 1800 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74ls00" H 7900 1800 50  0001 C CNN
+	1    7900 1800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Test_Point TP207
+U 1 1 5AD70C15
+P 8300 2600
+F 0 "TP207" H 8358 2720 50  0000 L CNN
+F 1 "Test_Point" H 8358 2629 50  0000 L CNN
+F 2 "Test:TEST_10" H 8500 2600 50  0001 C CNN
+F 3 "~" H 8500 2600 50  0001 C CNN
+	1    8300 2600
+	1    0    0    -1  
+$EndComp
+Text HLabel 8400 2700 2    60   Output ~ 0
+ADD_OUT
+$Comp
+L Test_Point TP205
+U 1 1 5AD70C1C
+P 7100 2900
+F 0 "TP205" H 7158 3020 50  0000 L CNN
+F 1 "Test_Point" H 7158 2929 50  0000 L CNN
+F 2 "Test:TEST_10" H 7300 2900 50  0001 C CNN
+F 3 "~" H 7300 2900 50  0001 C CNN
+	1    7100 2900
+	-1   0    0    1   
+$EndComp
+$Comp
+L Test_Point TP204
+U 1 1 5AD70C2C
+P 7100 2500
+F 0 "TP204" H 7158 2620 50  0000 L CNN
+F 1 "Test_Point" H 7158 2529 50  0000 L CNN
+F 2 "Test:TEST_10" H 7300 2500 50  0001 C CNN
+F 3 "~" H 7300 2500 50  0001 C CNN
+	1    7100 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74LS00 U?
+U 2 1 5AD70C34
+P 7900 2700
+AR Path="/5ABDE275/5AD3C598/5AD70C34" Ref="U?"  Part="1" 
+AR Path="/5ABDE275/5AD3E3F7/5AD70C34" Ref="U?"  Part="1" 
+AR Path="/5ABDE275/5AD4EFCE/5AD70C34" Ref="U?"  Part="1" 
+AR Path="/5ABDE275/5AD70C34" Ref="U203"  Part="2" 
+F 0 "U203" H 7900 3025 50  0000 C CNN
+F 1 "74LS00" H 7900 2934 50  0000 C CNN
+F 2 "Housings_DIP:DIP-14_W7.62mm_LongPads" H 7900 2700 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74ls00" H 7900 2700 50  0001 C CNN
+	2    7900 2700
+	1    0    0    -1  
+$EndComp
+Text HLabel 7000 2600 0    60   Input ~ 0
+ADD_IN
+Text HLabel 3100 5200 0    60   Input ~ 0
+BTN_LOAD
+Text Label 8700 3600 0    60   ~ 0
+LED_OUT_ADD
+Text Label 8700 4100 0    60   ~ 0
+BTN_OUT
+$Comp
+L Test_Point TP210
+U 1 1 5AD84DD6
+P 8600 3400
+F 0 "TP210" H 8658 3520 50  0000 L CNN
+F 1 "ADD OUT" H 8658 3429 50  0000 L CNN
+F 2 "Test:TEST_10" H 8800 3400 50  0001 C CNN
+F 3 "~" H 8800 3400 50  0001 C CNN
+	1    8600 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Test_Point TP211
+U 1 1 5AD84EDC
+P 8600 3900
+F 0 "TP211" H 8658 4020 50  0000 L CNN
+F 1 "BTN OUT" H 8658 3929 50  0000 L CNN
+F 2 "Test:TEST_10" H 8800 3900 50  0001 C CNN
+F 3 "~" H 8800 3900 50  0001 C CNN
+	1    8600 3900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8550 5400 8550 5300
+Wire Wire Line
+	8550 4500 8550 4700
+Wire Wire Line
+	2700 2900 2700 3000
+Wire Wire Line
+	2700 2600 2700 2500
+Wire Wire Line
+	7900 5300 8700 5300
+Wire Wire Line
+	6200 4700 6900 4700
+Wire Wire Line
+	2100 1700 2100 1900
+Wire Wire Line
+	2100 1800 3600 1800
+Wire Wire Line
+	2600 1800 2600 1700
+Connection ~ 2100 1800
+Wire Wire Line
+	3100 1800 3100 1700
+Connection ~ 2600 1800
+Wire Wire Line
+	3600 1800 3600 1700
+Connection ~ 3100 1800
+Wire Wire Line
+	2100 1200 2100 1400
+Wire Wire Line
+	2100 1300 3600 1300
+Wire Wire Line
+	2600 1200 2600 1400
+Connection ~ 2100 1300
+Connection ~ 2600 1300
+Wire Wire Line
+	3100 1300 3100 1400
+Wire Wire Line
+	3600 1300 3600 1400
+Connection ~ 3100 1300
+Wire Wire Line
+	6350 4700 6350 4500
+Connection ~ 6350 4700
+Wire Wire Line
+	6000 5300 6900 5300
+Wire Wire Line
+	6750 5500 6900 5500
+Wire Wire Line
+	7400 4300 7400 4400
+Wire Wire Line
+	6400 5550 6400 5600
+Wire Wire Line
+	6400 5600 6900 5600
+Wire Wire Line
+	10600 2900 10600 3100
+Wire Wire Line
+	10600 1700 10600 1900
+Wire Wire Line
+	5100 6000 6000 6000
+Wire Wire Line
+	6000 6000 6000 5300
+Wire Wire Line
+	5100 5100 6900 5100
+Wire Wire Line
+	3900 6100 3600 6100
+Wire Wire Line
+	3600 6100 3600 5200
+Wire Wire Line
+	3100 5200 3900 5200
+Wire Wire Line
+	5100 2800 6100 2800
+Wire Wire Line
+	5100 2600 6100 2600
+Wire Wire Line
+	1600 2900 1600 3000
+Wire Wire Line
+	1600 2600 1600 2500
+Wire Wire Line
+	1600 3400 900  3400
+Wire Wire Line
+	1600 3300 1600 3400
+Wire Wire Line
+	1800 3400 2700 3400
+Wire Wire Line
+	2700 3400 2700 3300
+Wire Wire Line
+	4600 2100 4600 2200
+Wire Wire Line
+	4600 3800 4600 3700
+Wire Wire Line
+	7400 5900 7400 6000
+Wire Wire Line
+	6450 4900 6900 4900
+Wire Wire Line
+	7900 4700 8700 4700
+Wire Wire Line
+	8900 4700 9000 4700
+Wire Wire Line
+	9000 4700 9000 4900
+Wire Wire Line
+	8900 4900 9100 4900
+Connection ~ 9000 4900
+Wire Wire Line
+	8700 4900 7900 4900
+Connection ~ 8550 4700
+Wire Wire Line
+	3400 2500 4100 2500
+Wire Wire Line
+	4100 2700 3400 2700
+Wire Wire Line
+	4000 3300 4100 3300
+Wire Wire Line
+	3400 3350 3400 3400
+Wire Wire Line
+	3400 3400 4100 3400
+Wire Wire Line
+	4000 3100 4100 3100
+Wire Wire Line
+	5100 2700 6500 2700
+Wire Wire Line
+	5100 2500 6500 2500
+Wire Wire Line
+	6500 2500 6500 1900
+Wire Wire Line
+	6500 1900 7600 1900
+Wire Wire Line
+	4000 2900 4100 2900
+Wire Wire Line
+	6300 1700 7600 1700
+Wire Wire Line
+	6500 2700 6500 2800
+Wire Wire Line
+	6500 2800 7600 2800
+Wire Wire Line
+	10600 3000 9800 3000
+Wire Wire Line
+	9800 3000 9800 2900
+Connection ~ 10600 3000
+Wire Wire Line
+	9800 1900 9800 1800
+Wire Wire Line
+	9800 1800 10600 1800
+Connection ~ 10600 1800
+Wire Wire Line
+	7900 5100 8700 5100
+Wire Wire Line
+	3100 5900 3900 5900
+Wire Wire Line
+	3100 5000 3900 5000
+Connection ~ 8550 5300
+Wire Wire Line
+	8900 5100 9000 5100
+Wire Wire Line
+	9000 5100 9000 5300
+Wire Wire Line
+	8900 5300 9100 5300
+Connection ~ 9000 5300
+Wire Wire Line
+	8300 1800 8300 1700
+Wire Wire Line
+	8200 1800 8400 1800
+Wire Wire Line
+	7100 1900 7100 2000
+Connection ~ 8300 1800
+Connection ~ 7100 1900
+Wire Wire Line
+	7100 1600 7100 1700
+Connection ~ 7100 1700
+Wire Wire Line
+	8300 2700 8300 2600
+Wire Wire Line
+	8200 2700 8400 2700
+Wire Wire Line
+	7100 2800 7100 2900
+Connection ~ 8300 2700
+Wire Wire Line
+	7000 2600 7600 2600
+Connection ~ 7100 2800
+Wire Wire Line
+	7100 2500 7100 2600
+Connection ~ 7100 2600
+Wire Wire Line
+	8600 4100 9400 4100
+Wire Wire Line
+	8600 4100 8600 3900
+Wire Wire Line
+	8600 3600 9400 3600
+Wire Wire Line
+	8600 3600 8600 3400
+Connection ~ 3600 5200
+$EndSCHEMATC

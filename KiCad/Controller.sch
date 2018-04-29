@@ -715,6 +715,7 @@ F 0 "J301" H 2150 5817 50  0000 C CNN
 F 1 "Power B" H 2150 5726 50  0000 C CNN
 F 2 "Socket_Strips:Socket_Strip_Straight_2x06_Pitch2.54mm" H 2100 5400 50  0001 C CNN
 F 3 "~" H 2100 5400 50  0001 C CNN
+F 4 "DNP" H 2100 5400 60  0001 C CNN "Assembly"
 	1    2100 5400
 	1    0    0    -1  
 $EndComp
@@ -726,6 +727,7 @@ F 0 "J302" H 2700 5800 50  0000 L CNN
 F 1 "Port B" H 2650 5700 50  0000 L CNN
 F 2 "Socket_Strips:Socket_Strip_Straight_1x06_Pitch2.54mm" H 2750 5400 50  0001 C CNN
 F 3 "~" H 2750 5400 50  0001 C CNN
+F 4 "DNP" H 2750 5400 60  0001 C CNN "Assembly"
 	1    2750 5400
 	-1   0    0    -1  
 $EndComp
@@ -852,6 +854,7 @@ F 0 "J304" H 3830 5642 50  0000 L CNN
 F 1 "UART" H 3830 5551 50  0000 L CNN
 F 2 "Socket_Strips:Socket_Strip_Straight_1x03_Pitch2.54mm" H 3750 5600 50  0001 C CNN
 F 3 "~" H 3750 5600 50  0001 C CNN
+F 4 "DNP" H 3750 5600 60  0001 C CNN "Assembly"
 	1    3750 5600
 	-1   0    0    -1  
 $EndComp
@@ -863,6 +866,7 @@ F 0 "J303" H 3830 5192 50  0000 L CNN
 F 1 "Spare" H 3830 5101 50  0000 L CNN
 F 2 "Socket_Strips:Socket_Strip_Straight_1x02_Pitch2.54mm" H 3750 5200 50  0001 C CNN
 F 3 "~" H 3750 5200 50  0001 C CNN
+F 4 "DNP" H 3750 5200 60  0001 C CNN "Assembly"
 	1    3750 5200
 	-1   0    0    -1  
 $EndComp
