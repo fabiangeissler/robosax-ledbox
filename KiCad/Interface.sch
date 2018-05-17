@@ -402,10 +402,6 @@ Wire Wire Line
 Wire Wire Line
 	4800 4500 4800 4400
 Wire Wire Line
-	4700 5300 4800 5300
-Wire Wire Line
-	3200 5300 3300 5300
-Wire Wire Line
 	4200 4800 4200 4700
 Wire Wire Line
 	4200 5800 4200 5900
@@ -470,10 +466,8 @@ F 3 "~" H 5000 5200 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	3300 5200 3300 5300
-Connection ~ 3300 5300
 Wire Wire Line
 	4800 5200 4800 5300
-Connection ~ 4800 5300
 $Comp
 L ledbox-rescue:Jumper_NO_Small JP501
 U 1 1 5AA63C09
@@ -516,11 +510,7 @@ Wire Wire Line
 Wire Wire Line
 	7100 1300 7100 1500
 Wire Wire Line
-	1800 5300 2200 5300
-Wire Wire Line
-	3300 5300 3700 5300
-Wire Wire Line
-	4800 5300 5200 5300
+	1800 5300 2100 5300
 Wire Wire Line
 	2750 2850 3150 2850
 $Comp
@@ -583,4 +573,26 @@ Wire Wire Line
 Connection ~ 2350 1750
 Wire Wire Line
 	2350 1350 2350 1250
+Wire Wire Line
+	4700 5300 4800 5300
+Wire Wire Line
+	3200 5300 3300 5300
+Wire Wire Line
+	2100 5300 2100 6300
+Wire Wire Line
+	2100 6300 3600 6300
+Wire Wire Line
+	5100 6300 5100 5300
+Wire Wire Line
+	5100 5300 5200 5300
+Connection ~ 2100 5300
+Wire Wire Line
+	2100 5300 2200 5300
+Wire Wire Line
+	3700 5300 3600 5300
+Wire Wire Line
+	3600 5300 3600 6300
+Connection ~ 3600 6300
+Wire Wire Line
+	3600 6300 5100 6300
 $EndSCHEMATC
