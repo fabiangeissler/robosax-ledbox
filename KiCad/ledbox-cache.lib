@@ -1,11 +1,43 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# +5V
+# Device:Q_PMOS_GSD
 #
-DEF +5V #PWR 0 0 Y Y 1 F P
+DEF Device:Q_PMOS_GSD Q 0 0 Y N 1 F N
+F0 "Q" 200 50 50 H V L CNN
+F1 "Device:Q_PMOS_GSD" 200 -50 50 H V L CNN
+F2 "" 200 100 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+C 65 0 111 0 1 10 N
+C 100 -70 11 0 1 0 F
+C 100 70 11 0 1 0 F
+P 2 0 1 0 2 0 10 0 N
+P 2 0 1 0 30 -70 100 -70 N
+P 2 0 1 10 30 -50 30 -90 N
+P 2 0 1 0 30 0 100 0 N
+P 2 0 1 10 30 20 30 -20 N
+P 2 0 1 0 30 70 100 70 N
+P 2 0 1 10 30 90 30 50 N
+P 2 0 1 0 100 -70 100 -100 N
+P 2 0 1 0 100 -70 100 0 N
+P 2 0 1 0 100 100 100 70 N
+P 3 0 1 10 10 75 10 -75 10 -75 N
+P 4 0 1 0 90 0 50 -15 50 15 90 0 F
+P 4 0 1 0 100 -70 130 -70 130 70 100 70 N
+P 4 0 1 0 110 -20 115 -15 145 -15 150 -10 N
+P 4 0 1 0 130 -15 115 10 145 10 130 -15 N
+X G 1 -200 0 200 R 50 50 1 1 I
+X S 2 100 -200 100 U 50 50 1 1 P
+X D 3 100 200 100 D 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# ledbox-rescue:+5V
+#
+DEF ledbox-rescue:+5V #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -150 50 H I C CNN
-F1 "+5V" 0 140 50 H V C CNN
+F1 "ledbox-rescue:+5V" 0 140 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -16,14 +48,13 @@ X +5V 1 0 0 0 U 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# 74LS00
+# ledbox-rescue:74LS00
 #
-DEF 74LS00 U 0 40 Y Y 5 L N
+DEF ledbox-rescue:74LS00 U 0 40 Y Y 5 L N
 F0 "U" 0 50 50 H V C CNN
-F1 "74LS00" 0 -50 50 H V C CNN
+F1 "ledbox-rescue:74LS00" 0 -50 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
-ALIAS 74LS37 7400 74HCT00 74HC00
 $FPLIST
  DIP*W7.62mm*
  SO14*
@@ -91,11 +122,11 @@ X ~ 13 -300 -100 170 R 50 50 4 2 I I
 ENDDRAW
 ENDDEF
 #
-# 74LS126
+# ledbox-rescue:74LS126
 #
-DEF 74LS126 U 0 40 Y Y 5 L N
+DEF ledbox-rescue:74LS126 U 0 40 Y Y 5 L N
 F0 "U" 0 50 50 H V C CNN
-F1 "74LS126" 0 -50 50 H V C CNN
+F1 "ledbox-rescue:74LS126" 0 -50 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -124,11 +155,11 @@ X GND 7 0 -500 200 U 50 50 5 0 W
 ENDDRAW
 ENDDEF
 #
-# 74LS175
+# ledbox-rescue:74LS175
 #
-DEF 74LS175 U 0 40 Y Y 1 L N
+DEF ledbox-rescue:74LS175 U 0 40 Y Y 1 L N
 F0 "U" -300 550 50 H V C CNN
-F1 "74LS175" -300 -650 50 H V C CNN
+F1 "ledbox-rescue:74LS175" -300 -650 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -155,11 +186,11 @@ X Cp 9 -500 -400 200 R 50 50 1 0 I C
 ENDDRAW
 ENDDEF
 #
-# C
+# ledbox-rescue:C
 #
-DEF C C 0 10 N Y 1 F N
+DEF ledbox-rescue:C C 0 10 N Y 1 F N
 F0 "C" 25 100 50 H V L CNN
-F1 "C" 25 -100 50 H V L CNN
+F1 "ledbox-rescue:C" 25 -100 50 H V L CNN
 F2 "" 38 -150 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -173,11 +204,11 @@ X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# CP
+# ledbox-rescue:CP
 #
-DEF CP C 0 10 N Y 1 F N
+DEF ledbox-rescue:CP C 0 10 N Y 1 F N
 F0 "C" 25 100 50 H V L CNN
-F1 "CP" 25 -100 50 H V L CNN
+F1 "ledbox-rescue:CP" 25 -100 50 H V L CNN
 F2 "" 38 -150 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -196,11 +227,11 @@ X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Conn_01x02
+# ledbox-rescue:Conn_01x02
 #
-DEF Conn_01x02 J 0 40 Y N 1 F N
+DEF ledbox-rescue:Conn_01x02 J 0 40 Y N 1 F N
 F0 "J" 0 100 50 H V C CNN
-F1 "Conn_01x02" 0 -200 50 H V C CNN
+F1 "ledbox-rescue:Conn_01x02" 0 -200 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -220,11 +251,11 @@ X Pin_2 2 -200 -100 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Conn_01x03
+# ledbox-rescue:Conn_01x03
 #
-DEF Conn_01x03 J 0 40 Y N 1 F N
+DEF ledbox-rescue:Conn_01x03 J 0 40 Y N 1 F N
 F0 "J" 0 200 50 H V C CNN
-F1 "Conn_01x03" 0 -200 50 H V C CNN
+F1 "ledbox-rescue:Conn_01x03" 0 -200 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -246,11 +277,11 @@ X Pin_3 3 -200 -100 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Conn_02x05_Odd_Even
+# ledbox-rescue:Conn_02x05_Odd_Even
 #
-DEF Conn_02x05_Odd_Even J 0 40 Y N 1 F N
+DEF ledbox-rescue:Conn_02x05_Odd_Even J 0 40 Y N 1 F N
 F0 "J" 50 300 50 H V C CNN
-F1 "Conn_02x05_Odd_Even" 50 -300 50 H V C CNN
+F1 "ledbox-rescue:Conn_02x05_Odd_Even" 50 -300 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -286,11 +317,11 @@ X Pin_9 9 -200 -200 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# GND
+# ledbox-rescue:GND
 #
-DEF GND #PWR 0 0 Y Y 1 F P
+DEF ledbox-rescue:GND #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -250 50 H I C CNN
-F1 "GND" 0 -150 50 H V C CNN
+F1 "ledbox-rescue:GND" 0 -150 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -299,11 +330,11 @@ X GND 1 0 0 0 D 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# Jumper_NC_Small
+# ledbox-rescue:Jumper_NC_Small
 #
-DEF Jumper_NC_Small JP 0 30 N N 1 F N
+DEF ledbox-rescue:Jumper_NC_Small JP 0 30 N N 1 F N
 F0 "JP" 0 80 50 H V C CNN
-F1 "Jumper_NC_Small" 10 -60 50 H V C CNN
+F1 "ledbox-rescue:Jumper_NC_Small" 10 -60 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -315,11 +346,11 @@ X 2 2 100 0 40 L 50 50 0 1 P
 ENDDRAW
 ENDDEF
 #
-# Jumper_NO_Small
+# ledbox-rescue:Jumper_NO_Small
 #
-DEF Jumper_NO_Small JP 0 30 N N 1 F N
+DEF ledbox-rescue:Jumper_NO_Small JP 0 30 N N 1 F N
 F0 "JP" 0 80 50 H V C CNN
-F1 "Jumper_NO_Small" 10 -60 50 H V C CNN
+F1 "ledbox-rescue:Jumper_NO_Small" 10 -60 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -330,11 +361,11 @@ X 2 2 100 0 40 L 50 50 0 1 P
 ENDDRAW
 ENDDEF
 #
-# LED
+# ledbox-rescue:LED
 #
-DEF LED D 0 40 Y N 1 F N
+DEF ledbox-rescue:LED D 0 40 Y N 1 F N
 F0 "D" 0 100 50 H V C CNN
-F1 "LED" 0 -100 50 H V C CNN
+F1 "ledbox-rescue:LED" 0 -100 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -351,43 +382,11 @@ X A 2 150 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Q_NMOS_GSD
+# ledbox-rescue:R
 #
-DEF Q_NMOS_GSD Q 0 0 Y N 1 F N
-F0 "Q" 200 50 50 H V L CNN
-F1 "Q_NMOS_GSD" 200 -50 50 H V L CNN
-F2 "" 200 100 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-C 65 0 111 0 1 10 N
-C 100 -70 11 0 1 0 F
-C 100 70 11 0 1 0 F
-P 2 0 1 0 2 0 10 0 N
-P 2 0 1 0 30 -70 100 -70 N
-P 2 0 1 10 30 -50 30 -90 N
-P 2 0 1 0 30 0 100 0 N
-P 2 0 1 10 30 20 30 -20 N
-P 2 0 1 0 30 70 100 70 N
-P 2 0 1 10 30 90 30 50 N
-P 2 0 1 0 100 -70 100 -100 N
-P 2 0 1 0 100 -70 100 0 N
-P 2 0 1 0 100 100 100 70 N
-P 3 0 1 10 10 75 10 -75 10 -75 N
-P 4 0 1 0 40 0 80 15 80 -15 40 0 F
-P 4 0 1 0 100 -70 130 -70 130 70 100 70 N
-P 4 0 1 0 110 20 115 15 145 15 150 10 N
-P 4 0 1 0 130 15 115 -10 145 -10 130 15 N
-X G 1 -200 0 200 R 50 50 1 1 I
-X S 2 100 -200 100 U 50 50 1 1 P
-X D 3 100 200 100 D 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
-# R
-#
-DEF R R 0 0 N Y 1 F N
+DEF ledbox-rescue:R R 0 0 N Y 1 F N
 F0 "R" 80 0 50 V V C CNN
-F1 "R" 0 0 50 V V C CNN
+F1 "ledbox-rescue:R" 0 0 50 V V C CNN
 F2 "" -70 0 50 V I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -401,11 +400,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Test_Point
+# ledbox-rescue:Test_Point
 #
-DEF Test_Point TP 0 30 N N 1 F N
+DEF ledbox-rescue:Test_Point TP 0 30 N N 1 F N
 F0 "TP" 0 270 50 H V C CNN
-F1 "Test_Point" 0 200 50 H V C CNN
+F1 "ledbox-rescue:Test_Point" 0 200 50 H V C CNN
 F2 "" 200 0 50 H I C CNN
 F3 "" 200 0 50 H I C CNN
 $FPLIST
@@ -418,11 +417,11 @@ X 1 1 0 0 100 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# VCC
+# ledbox-rescue:VCC
 #
-DEF VCC #PWR 0 0 Y Y 1 F P
+DEF ledbox-rescue:VCC #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -150 50 H I C CNN
-F1 "VCC" 0 150 50 H V C CNN
+F1 "ledbox-rescue:VCC" 0 150 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -432,11 +431,11 @@ X VCC 1 0 0 0 U 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# WS2812B
+# ledbox-rescue:WS2812B
 #
-DEF WS2812B U 0 40 Y Y 1 F N
+DEF ledbox-rescue:WS2812B U 0 40 Y Y 1 F N
 F0 "U" -100 400 60 H V R CNN
-F1 "WS2812B" 50 400 60 H V L CNN
+F1 "ledbox-rescue:WS2812B" 50 400 60 H V L CNN
 F2 "LEDs:LED_WS2812B-PLCC4" 50 -500 60 H I L CNN
 F3 "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf" 50 -400 60 H I L CNN
 $FPLIST

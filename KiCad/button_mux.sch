@@ -1,131 +1,4 @@
-EESchema Schematic File Version 3
-LIBS:ledbox-rescue
-LIBS:power
-LIBS:device
-LIBS:linear
-LIBS:regul
-LIBS:adc-dac
-LIBS:memory
-LIBS:xilinx
-LIBS:microcontrollers
-LIBS:dsp
-LIBS:microchip
-LIBS:analog_switches
-LIBS:motorola
-LIBS:texas
-LIBS:intel
-LIBS:audio
-LIBS:interface
-LIBS:digital-audio
-LIBS:philips
-LIBS:display
-LIBS:cypress
-LIBS:siliconi
-LIBS:opto
-LIBS:atmel
-LIBS:contrib
-LIBS:ledbox-newsymbols
-LIBS:74xxLVCxG
-LIBS:analog_devices
-LIBS:boards
-LIBS:bridge_rectifier
-LIBS:caf
-LIBS:cirrus logic
-LIBS:eeprom
-LIBS:ft232rl
-LIBS:linear_technology
-LIBS:micrel
-LIBS:NXP Semiconductor
-LIBS:SigmaDSP
-LIBS:texas_instruments
-LIBS:tl431
-LIBS:toslink
-LIBS:worldsemi
-LIBS:ac-dc
-LIBS:Altera
-LIBS:Battery_Management
-LIBS:bbd
-LIBS:Bosch
-LIBS:brooktre
-LIBS:Connector
-LIBS:dc-dc
-LIBS:Decawave
-LIBS:Diode
-LIBS:Display
-LIBS:driver_gate
-LIBS:DSP_Microchip_DSPIC33
-LIBS:elec-unifil
-LIBS:ESD_Protection
-LIBS:Espressif
-LIBS:FPGA_Actel
-LIBS:ftdi
-LIBS:gennum
-LIBS:Graphic
-LIBS:hc11
-LIBS:infineon
-LIBS:intersil
-LIBS:ir
-LIBS:Lattice
-LIBS:LED
-LIBS:LEM
-LIBS:Logic_74xgxx
-LIBS:Logic_74xx
-LIBS:Logic_CMOS_4000
-LIBS:Logic_CMOS_IEEE
-LIBS:logic_programmable
-LIBS:Logic_TTL_IEEE
-LIBS:maxim
-LIBS:MCU_Microchip_PIC10
-LIBS:MCU_Microchip_PIC12
-LIBS:MCU_Microchip_PIC16
-LIBS:MCU_Microchip_PIC18
-LIBS:MCU_Microchip_PIC24
-LIBS:MCU_Microchip_PIC32
-LIBS:MCU_NXP_Kinetis
-LIBS:MCU_NXP_LPC
-LIBS:MCU_NXP_S08
-LIBS:MCU_Parallax
-LIBS:MCU_ST_STM8
-LIBS:MCU_ST_STM32
-LIBS:MCU_Texas_MSP430
-LIBS:Mechanical
-LIBS:modules
-LIBS:motor_drivers
-LIBS:Motor
-LIBS:nordicsemi
-LIBS:nxp
-LIBS:onsemi
-LIBS:Oscillators
-LIBS:Power_Management
-LIBS:powerint
-LIBS:pspice
-LIBS:references
-LIBS:Relay
-LIBS:RF_Bluetooth
-LIBS:rfcom
-LIBS:RFSolutions
-LIBS:Sensor_Current
-LIBS:Sensor_Humidity
-LIBS:sensors
-LIBS:silabs
-LIBS:supertex
-LIBS:Switch
-LIBS:Transformer
-LIBS:Transistor
-LIBS:triac_thyristor
-LIBS:Valve
-LIBS:video
-LIBS:wiznet
-LIBS:Worldsemi
-LIBS:Xicor
-LIBS:xilinx-artix7
-LIBS:xilinx-kintex7
-LIBS:xilinx-spartan6
-LIBS:xilinx-virtex5
-LIBS:xilinx-virtex6
-LIBS:xilinx-virtex7
-LIBS:zetex
-LIBS:Zilog
+EESchema Schematic File Version 4
 LIBS:ledbox-cache
 EELAYER 26 0
 EELAYER END
@@ -142,12 +15,12 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L R R301
+L ledbox-rescue:R R301
 U 1 1 5AD3C92C
 P 4900 3800
 AR Path="/5ABDE275/5AD3C598/5AD3C92C" Ref="R301"  Part="1" 
 AR Path="/5ABDE275/5AD3E3F7/5AD3C92C" Ref="R401"  Part="1" 
-F 0 "R301" H 4970 3846 50  0000 L CNN
+F 0 "R401" H 4970 3846 50  0000 L CNN
 F 1 "4k7" H 4970 3755 50  0000 L CNN
 F 2 "Resistors_SMD:R_0805" V 4830 3800 50  0001 C CNN
 F 3 "" H 4900 3800 50  0001 C CNN
@@ -158,12 +31,12 @@ F 6 "N" H 4900 3800 60  0001 C CNN "Spice_Netlist_Enabled"
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR0302
+L ledbox-rescue:GND #PWR0302
 U 1 1 5AD3C933
 P 4900 5200
 AR Path="/5ABDE275/5AD3C598/5AD3C933" Ref="#PWR0302"  Part="1" 
 AR Path="/5ABDE275/5AD3E3F7/5AD3C933" Ref="#PWR0402"  Part="1" 
-F 0 "#PWR0302" H 4900 4950 50  0001 C CNN
+F 0 "#PWR0402" H 4900 4950 50  0001 C CNN
 F 1 "GND" H 4905 5027 50  0000 C CNN
 F 2 "" H 4900 5200 50  0001 C CNN
 F 3 "" H 4900 5200 50  0001 C CNN
@@ -171,12 +44,13 @@ F 3 "" H 4900 5200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR0301
+L ledbox-rescue:+5V #PWR0301
 U 1 1 5AD3C939
 P 4900 3550
 AR Path="/5ABDE275/5AD3C598/5AD3C939" Ref="#PWR0301"  Part="1" 
 AR Path="/5ABDE275/5AD3E3F7/5AD3C939" Ref="#PWR0401"  Part="1" 
-F 0 "#PWR0301" H 4900 3400 50  0001 C CNN
+AR Path="/5AD3C939" Ref="#PWR0301"  Part="1" 
+F 0 "#PWR0401" H 4900 3400 50  0001 C CNN
 F 1 "+5V" H 4915 3723 50  0000 C CNN
 F 2 "" H 4900 3550 50  0001 C CNN
 F 3 "" H 4900 3550 50  0001 C CNN
@@ -184,12 +58,12 @@ F 3 "" H 4900 3550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R302
+L ledbox-rescue:R R302
 U 1 1 5AD3C942
 P 5150 4400
 AR Path="/5ABDE275/5AD3C598/5AD3C942" Ref="R302"  Part="1" 
 AR Path="/5ABDE275/5AD3E3F7/5AD3C942" Ref="R402"  Part="1" 
-F 0 "R302" H 5220 4446 50  0000 L CNN
+F 0 "R402" H 5220 4446 50  0000 L CNN
 F 1 "47k" H 5220 4355 50  0000 L CNN
 F 2 "Resistors_SMD:R_0805" V 5080 4400 50  0001 C CNN
 F 3 "" H 5150 4400 50  0001 C CNN
@@ -200,12 +74,12 @@ F 6 "N" H 5150 4400 60  0001 C CNN "Spice_Netlist_Enabled"
 	0    1    1    0   
 $EndComp
 $Comp
-L C C301
+L ledbox-rescue:C C301
 U 1 1 5AD3C949
 P 5400 4950
 AR Path="/5ABDE275/5AD3C598/5AD3C949" Ref="C301"  Part="1" 
 AR Path="/5ABDE275/5AD3E3F7/5AD3C949" Ref="C401"  Part="1" 
-F 0 "C301" H 5515 4996 50  0000 L CNN
+F 0 "C401" H 5515 4996 50  0000 L CNN
 F 1 "100n" H 5515 4905 50  0000 L CNN
 F 2 "Capacitors_SMD:C_0805" H 5438 4800 50  0001 C CNN
 F 3 "" H 5400 4950 50  0001 C CNN
@@ -213,12 +87,12 @@ F 3 "" H 5400 4950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR0303
+L ledbox-rescue:GND #PWR0303
 U 1 1 5AD3C950
 P 5400 5200
 AR Path="/5ABDE275/5AD3C598/5AD3C950" Ref="#PWR0303"  Part="1" 
 AR Path="/5ABDE275/5AD3E3F7/5AD3C950" Ref="#PWR0403"  Part="1" 
-F 0 "#PWR0303" H 5400 4950 50  0001 C CNN
+F 0 "#PWR0403" H 5400 4950 50  0001 C CNN
 F 1 "GND" H 5405 5027 50  0000 C CNN
 F 2 "" H 5400 5200 50  0001 C CNN
 F 3 "" H 5400 5200 50  0001 C CNN
@@ -226,12 +100,12 @@ F 3 "" H 5400 5200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Jumper_NO_Small JP301
+L ledbox-rescue:Jumper_NO_Small JP301
 U 1 1 5AD3C956
 P 5150 4200
 AR Path="/5ABDE275/5AD3C598/5AD3C956" Ref="JP301"  Part="1" 
 AR Path="/5ABDE275/5AD3E3F7/5AD3C956" Ref="JP401"  Part="1" 
-F 0 "JP301" H 5150 4397 50  0000 C CNN
+F 0 "JP401" H 5150 4397 50  0000 C CNN
 F 1 "~Debounce" H 5150 4299 50  0000 C CNN
 F 2 "SMD_Jumper:Jumper_SMD_02" H 5150 4200 50  0001 C CNN
 F 3 "" H 5150 4200 50  0001 C CNN
@@ -239,12 +113,12 @@ F 3 "" H 5150 4200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Jumper_NC_Small JP302
+L ledbox-rescue:Jumper_NC_Small JP302
 U 1 1 5AD3C95D
 P 5400 4600
 AR Path="/5ABDE275/5AD3C598/5AD3C95D" Ref="JP302"  Part="1" 
 AR Path="/5ABDE275/5AD3E3F7/5AD3C95D" Ref="JP402"  Part="1" 
-F 0 "JP302" V 5354 4674 50  0000 L CNN
+F 0 "JP402" V 5354 4674 50  0000 L CNN
 F 1 "Debounce" V 5445 4674 50  0000 L CNN
 F 2 "SMD_Jumper:Jumper_SMD_02" H 5400 4600 50  0001 C CNN
 F 3 "" H 5400 4600 50  0001 C CNN
@@ -252,38 +126,38 @@ F 3 "" H 5400 4600 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Test_Point TP301
+L ledbox-rescue:Test_Point TP301
 U 1 1 5AD3C964
 P 5400 3900
 AR Path="/5ABDE275/5AD3C598/5AD3C964" Ref="TP301"  Part="1" 
 AR Path="/5ABDE275/5AD3E3F7/5AD3C964" Ref="TP401"  Part="1" 
-F 0 "TP301" H 5458 4020 50  0000 L CNN
+F 0 "TP401" H 5458 4020 50  0000 L CNN
 F 1 "BTN ANA" H 5458 3929 50  0000 L CNN
-F 2 "Test:TEST_10" H 5600 3900 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 5600 3900 50  0001 C CNN
 F 3 "~" H 5600 3900 50  0001 C CNN
 	1    5400 3900
 	1    0    0    -1  
 $EndComp
 $Comp
-L Test_Point TP304
+L ledbox-rescue:Test_Point TP304
 U 1 1 5AD3C96B
 P 7700 3700
 AR Path="/5ABDE275/5AD3C598/5AD3C96B" Ref="TP304"  Part="1" 
 AR Path="/5ABDE275/5AD3E3F7/5AD3C96B" Ref="TP404"  Part="1" 
-F 0 "TP304" H 7758 3820 50  0000 L CNN
+F 0 "TP404" H 7758 3820 50  0000 L CNN
 F 1 "BTN IN" H 7758 3729 50  0000 L CNN
-F 2 "Test:TEST_10" H 7900 3700 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 7900 3700 50  0001 C CNN
 F 3 "~" H 7900 3700 50  0001 C CNN
 	1    7700 3700
 	1    0    0    -1  
 $EndComp
 $Comp
-L Conn_01x02 J301
+L ledbox-rescue:Conn_01x02 J301
 U 1 1 5AD3C972
 P 4600 4700
 AR Path="/5ABDE275/5AD3C598/5AD3C972" Ref="J301"  Part="1" 
 AR Path="/5ABDE275/5AD3E3F7/5AD3C972" Ref="J401"  Part="1" 
-F 0 "J301" H 4600 4800 50  0000 C CNN
+F 0 "J401" H 4600 4800 50  0000 C CNN
 F 1 "Button" H 4600 4500 50  0000 C CNN
 F 2 "Connectors_Molex:Molex_KK-6410-02_02x2.54mm_Straight" H 4600 4700 50  0001 C CNN
 F 3 "" H 4600 4700 50  0001 C CNN
@@ -295,16 +169,16 @@ BTN_DATA_IN
 Text HLabel 5900 3400 0    60   Input ~ 0
 BTN_LOAD
 Wire Wire Line
-	7300 3000 7300 3550
+	7300 3000 7300 3300
 Connection ~ 5400 4200
 Connection ~ 4900 4200
 Wire Wire Line
 	5050 4200 4900 4200
 Wire Wire Line
-	5250 4200 5700 4200
+	5250 4200 5400 4200
 Connection ~ 5400 4400
 Wire Wire Line
-	5400 3900 5400 4500
+	5400 3900 5400 4200
 Wire Wire Line
 	5400 4800 5400 4700
 Wire Wire Line
@@ -315,11 +189,11 @@ Connection ~ 4900 4400
 Wire Wire Line
 	4900 4400 5000 4400
 Wire Wire Line
-	7600 3800 8100 3800
+	7600 3800 7700 3800
 Wire Wire Line
 	4900 3650 4900 3550
 Wire Wire Line
-	4900 3950 4900 4700
+	4900 3950 4900 4200
 Wire Wire Line
 	4900 4800 4900 5200
 Wire Wire Line
@@ -327,8 +201,8 @@ Wire Wire Line
 Wire Wire Line
 	4800 4800 4900 4800
 $Comp
-L 74LS126 U?
-U 2 1 5AD3C994
+L ledbox-rescue:74LS126 U?
+U 4 1 5AD3C994
 P 6000 4200
 AR Path="/5ABDE275/5AD3C994" Ref="U?"  Part="2" 
 AR Path="/5ABDE275/5AD3C598/5AD3C994" Ref="U204"  Part="2" 
@@ -337,12 +211,12 @@ F 0 "U204" H 6000 4517 50  0000 C CNN
 F 1 "74LS126" H 6000 4426 50  0000 C CNN
 F 2 "Housings_DIP:DIP-14_W7.62mm_LongPads" H 6000 4200 50  0001 C CNN
 F 3 "http://www.ti.com/lit/gpn/sn74LS126" H 6000 4200 50  0001 C CNN
-	2    6000 4200
+	4    6000 4200
 	1    0    0    1   
 $EndComp
 $Comp
-L 74LS126 U?
-U 1 1 5AD3C99B
+L ledbox-rescue:74LS126 U?
+U 3 1 5AD3C99B
 P 7300 3800
 AR Path="/5ABDE275/5AD3C99B" Ref="U?"  Part="3" 
 AR Path="/5ABDE275/5AD3C598/5AD3C99B" Ref="U204"  Part="1" 
@@ -351,52 +225,52 @@ F 0 "U204" H 7300 4117 50  0000 C CNN
 F 1 "74LS126" H 7300 4026 50  0000 C CNN
 F 2 "Housings_DIP:DIP-14_W7.62mm_LongPads" H 7300 3800 50  0001 C CNN
 F 3 "http://www.ti.com/lit/gpn/sn74LS126" H 7300 3800 50  0001 C CNN
-	1    7300 3800
+	3    7300 3800
 	1    0    0    1   
 $EndComp
 Wire Wire Line
 	7700 4200 6300 4200
 Wire Wire Line
-	7700 3700 7700 4200
+	7700 3700 7700 3800
 Connection ~ 7700 3800
 Wire Wire Line
 	6900 3800 7000 3800
 Wire Wire Line
-	5900 3400 6600 3400
+	5900 3400 6000 3400
 Wire Wire Line
-	6000 3300 6000 3950
+	6000 3300 6000 3400
 Connection ~ 6000 3400
 Text HLabel 8100 3800 2    60   Output ~ 0
 BTN_OUT
 $Comp
-L Test_Point TP302
+L ledbox-rescue:Test_Point TP302
 U 1 1 5AD6B4E2
 P 6000 3300
 AR Path="/5ABDE275/5AD3C598/5AD6B4E2" Ref="TP302"  Part="1" 
 AR Path="/5ABDE275/5AD3E3F7/5AD6B4E2" Ref="TP402"  Part="1" 
-F 0 "TP302" H 6058 3420 50  0000 L CNN
+F 0 "TP402" H 6058 3420 50  0000 L CNN
 F 1 "BTN LOAD" H 6058 3329 50  0000 L CNN
-F 2 "Test:TEST_10" H 6200 3300 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 6200 3300 50  0001 C CNN
 F 3 "~" H 6200 3300 50  0001 C CNN
 	1    6000 3300
 	1    0    0    -1  
 $EndComp
 $Comp
-L Test_Point TP303
+L ledbox-rescue:Test_Point TP303
 U 1 1 5AD6BA5B
 P 7300 3000
 AR Path="/5ABDE275/5AD3C598/5AD6BA5B" Ref="TP303"  Part="1" 
 AR Path="/5ABDE275/5AD3E3F7/5AD6BA5B" Ref="TP403"  Part="1" 
-F 0 "TP303" H 7358 3120 50  0000 L CNN
+F 0 "TP403" H 7358 3120 50  0000 L CNN
 F 1 "~BTN LOAD" H 7358 3029 50  0000 L CNN
-F 2 "Test:TEST_10" H 7500 3000 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 7500 3000 50  0001 C CNN
 F 3 "~" H 7500 3000 50  0001 C CNN
 	1    7300 3000
 	1    0    0    -1  
 $EndComp
 $Comp
-L 74LS00 U203
-U 3 1 5AD6CA09
+L ledbox-rescue:74LS00 U203
+U 4 1 5AD6CA09
 P 6900 3300
 AR Path="/5ABDE275/5AD3C598/5AD6CA09" Ref="U203"  Part="3" 
 AR Path="/5ABDE275/5AD3E3F7/5AD6CA09" Ref="U203"  Part="4" 
@@ -404,7 +278,7 @@ F 0 "U203" H 6900 3625 50  0000 C CNN
 F 1 "74LS00" H 6900 3534 50  0000 C CNN
 F 2 "Housings_DIP:DIP-14_W7.62mm_LongPads" H 6900 3300 50  0001 C CNN
 F 3 "http://www.ti.com/lit/gpn/sn74ls00" H 6900 3300 50  0001 C CNN
-	3    6900 3300
+	4    6900 3300
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -415,4 +289,26 @@ Wire Wire Line
 Wire Wire Line
 	6500 3200 6500 3400
 Connection ~ 6500 3400
+Wire Wire Line
+	5400 4200 5700 4200
+Wire Wire Line
+	5400 4200 5400 4400
+Wire Wire Line
+	4900 4200 4900 4400
+Wire Wire Line
+	5400 4400 5400 4500
+Wire Wire Line
+	4900 4400 4900 4700
+Wire Wire Line
+	7700 3800 8100 3800
+Wire Wire Line
+	7700 3800 7700 4200
+Wire Wire Line
+	6000 3400 6500 3400
+Wire Wire Line
+	6000 3400 6000 3950
+Wire Wire Line
+	7300 3300 7300 3550
+Wire Wire Line
+	6500 3400 6600 3400
 $EndSCHEMATC

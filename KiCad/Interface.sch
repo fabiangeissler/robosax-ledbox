@@ -1,131 +1,4 @@
-EESchema Schematic File Version 3
-LIBS:ledbox-rescue
-LIBS:power
-LIBS:device
-LIBS:linear
-LIBS:regul
-LIBS:adc-dac
-LIBS:memory
-LIBS:xilinx
-LIBS:microcontrollers
-LIBS:dsp
-LIBS:microchip
-LIBS:analog_switches
-LIBS:motorola
-LIBS:texas
-LIBS:intel
-LIBS:audio
-LIBS:interface
-LIBS:digital-audio
-LIBS:philips
-LIBS:display
-LIBS:cypress
-LIBS:siliconi
-LIBS:opto
-LIBS:atmel
-LIBS:contrib
-LIBS:ledbox-newsymbols
-LIBS:74xxLVCxG
-LIBS:analog_devices
-LIBS:boards
-LIBS:bridge_rectifier
-LIBS:caf
-LIBS:cirrus logic
-LIBS:eeprom
-LIBS:ft232rl
-LIBS:linear_technology
-LIBS:micrel
-LIBS:NXP Semiconductor
-LIBS:SigmaDSP
-LIBS:texas_instruments
-LIBS:tl431
-LIBS:toslink
-LIBS:worldsemi
-LIBS:ac-dc
-LIBS:Altera
-LIBS:Battery_Management
-LIBS:bbd
-LIBS:Bosch
-LIBS:brooktre
-LIBS:Connector
-LIBS:dc-dc
-LIBS:Decawave
-LIBS:Diode
-LIBS:Display
-LIBS:driver_gate
-LIBS:DSP_Microchip_DSPIC33
-LIBS:elec-unifil
-LIBS:ESD_Protection
-LIBS:Espressif
-LIBS:FPGA_Actel
-LIBS:ftdi
-LIBS:gennum
-LIBS:Graphic
-LIBS:hc11
-LIBS:infineon
-LIBS:intersil
-LIBS:ir
-LIBS:Lattice
-LIBS:LED
-LIBS:LEM
-LIBS:Logic_74xgxx
-LIBS:Logic_74xx
-LIBS:Logic_CMOS_4000
-LIBS:Logic_CMOS_IEEE
-LIBS:logic_programmable
-LIBS:Logic_TTL_IEEE
-LIBS:maxim
-LIBS:MCU_Microchip_PIC10
-LIBS:MCU_Microchip_PIC12
-LIBS:MCU_Microchip_PIC16
-LIBS:MCU_Microchip_PIC18
-LIBS:MCU_Microchip_PIC24
-LIBS:MCU_Microchip_PIC32
-LIBS:MCU_NXP_Kinetis
-LIBS:MCU_NXP_LPC
-LIBS:MCU_NXP_S08
-LIBS:MCU_Parallax
-LIBS:MCU_ST_STM8
-LIBS:MCU_ST_STM32
-LIBS:MCU_Texas_MSP430
-LIBS:Mechanical
-LIBS:modules
-LIBS:motor_drivers
-LIBS:Motor
-LIBS:nordicsemi
-LIBS:nxp
-LIBS:onsemi
-LIBS:Oscillators
-LIBS:Power_Management
-LIBS:powerint
-LIBS:pspice
-LIBS:references
-LIBS:Relay
-LIBS:RF_Bluetooth
-LIBS:rfcom
-LIBS:RFSolutions
-LIBS:Sensor_Current
-LIBS:Sensor_Humidity
-LIBS:sensors
-LIBS:silabs
-LIBS:supertex
-LIBS:Switch
-LIBS:Transformer
-LIBS:Transistor
-LIBS:triac_thyristor
-LIBS:Valve
-LIBS:video
-LIBS:wiznet
-LIBS:Worldsemi
-LIBS:Xicor
-LIBS:xilinx-artix7
-LIBS:xilinx-kintex7
-LIBS:xilinx-spartan6
-LIBS:xilinx-virtex5
-LIBS:xilinx-virtex6
-LIBS:xilinx-virtex7
-LIBS:zetex
-LIBS:Zilog
+EESchema Schematic File Version 4
 LIBS:ledbox-cache
 EELAYER 26 0
 EELAYER END
@@ -141,10 +14,10 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Label 6500 1400 0    60   ~ 0
+Text Label 6500 1300 0    60   ~ 0
 IR_LED_DRV
 $Comp
-L Conn_01x03 J501
+L ledbox-rescue:Conn_01x03 J501
 U 1 1 59DBA9AD
 P 7400 1400
 F 0 "J501" H 7400 1600 50  0000 C CNN
@@ -155,20 +28,11 @@ F 3 "" H 7400 1400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR0515
-U 1 1 59DBA9B4
-P 7100 1200
-F 0 "#PWR0515" H 7100 1050 50  0001 C CNN
-F 1 "+5V" H 7100 1340 50  0000 C CNN
-F 2 "" H 7100 1200 50  0001 C CNN
-F 3 "" H 7100 1200 50  0001 C CNN
-	1    7100 1200
-	1    0    0    -1  
-$EndComp
-$Comp
-L +5V #PWR0513
+L ledbox-rescue:+5V #PWR0513
 U 1 1 59DBB492
 P 6300 4000
+AR Path="/59DBB492" Ref="#PWR0513"  Part="1" 
+AR Path="/5ABDE6F3/59DBB492" Ref="#PWR0513"  Part="1" 
 F 0 "#PWR0513" H 6300 3850 50  0001 C CNN
 F 1 "+5V" H 6300 4140 50  0000 C CNN
 F 2 "" H 6300 4000 50  0001 C CNN
@@ -177,7 +41,7 @@ F 3 "" H 6300 4000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR0514
+L ledbox-rescue:GND #PWR0514
 U 1 1 59DBB498
 P 6300 4500
 F 0 "#PWR0514" H 6300 4250 50  0001 C CNN
@@ -188,7 +52,7 @@ F 3 "" H 6300 4500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C503
+L ledbox-rescue:C C503
 U 1 1 59DBB49E
 P 6300 4250
 F 0 "C503" H 6325 4350 50  0000 L CNN
@@ -199,9 +63,11 @@ F 3 "" H 6300 4250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR0516
+L ledbox-rescue:+5V #PWR0516
 U 1 1 59DBB50F
 P 8200 1100
+AR Path="/59DBB50F" Ref="#PWR0516"  Part="1" 
+AR Path="/5ABDE6F3/59DBB50F" Ref="#PWR0516"  Part="1" 
 F 0 "#PWR0516" H 8200 950 50  0001 C CNN
 F 1 "+5V" H 8200 1240 50  0000 C CNN
 F 2 "" H 8200 1100 50  0001 C CNN
@@ -210,7 +76,7 @@ F 3 "" H 8200 1100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR0517
+L ledbox-rescue:GND #PWR0517
 U 1 1 59DBB515
 P 8200 1600
 F 0 "#PWR0517" H 8200 1350 50  0001 C CNN
@@ -221,7 +87,7 @@ F 3 "" H 8200 1600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C504
+L ledbox-rescue:C C504
 U 1 1 59DBB51B
 P 8200 1350
 F 0 "C504" H 8225 1450 50  0000 L CNN
@@ -232,151 +98,108 @@ F 3 "" H 8200 1350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Q_NMOS_GSD Q501
-U 1 1 5AA46C50
-P 3600 2500
-F 0 "Q501" H 3806 2546 50  0000 L CNN
-F 1 "NTR4003N" H 3806 2455 50  0000 L CNN
-F 2 "TO_SOT_Packages_SMD:SOT-23" H 3800 2600 50  0001 C CNN
-F 3 "http://www.onsemi.com/pub/Collateral/NTR4003N-D.PDF" H 3600 2500 50  0001 C CNN
-F 4 "Logic Level N-ch 500mA MOS (PMBF170)" H 3600 2500 60  0001 C CNN "Alternative"
-	1    3600 2500
-	1    0    0    -1  
-$EndComp
-$Comp
-L R R501
+L ledbox-rescue:R R501
 U 1 1 5AA47145
-P 3050 2500
-F 0 "R501" V 3130 2500 50  0000 C CNN
-F 1 "100" V 3050 2500 50  0000 C CNN
-F 2 "Resistors_SMD:R_0805" V 2980 2500 50  0001 C CNN
-F 3 "" H 3050 2500 50  0001 C CNN
-	1    3050 2500
+P 2100 1750
+F 0 "R501" V 2180 1750 50  0000 C CNN
+F 1 "100" V 2100 1750 50  0000 C CNN
+F 2 "Resistors_SMD:R_0805" V 2030 1750 50  0001 C CNN
+F 3 "" H 2100 1750 50  0001 C CNN
+	1    2100 1750
 	0    1    1    0   
 $EndComp
 $Comp
-L R R503
+L ledbox-rescue:R R503
 U 1 1 5AA471CD
-P 3700 1650
-F 0 "R503" V 3780 1650 50  0000 C CNN
-F 1 "220" V 3700 1650 50  0000 C CNN
-F 2 "Resistors_SMD:R_0805" V 3630 1650 50  0001 C CNN
-F 3 "" H 3700 1650 50  0001 C CNN
-	1    3700 1650
-	-1   0    0    1   
+P 2750 2600
+F 0 "R503" V 2830 2600 50  0000 C CNN
+F 1 "220" V 2750 2600 50  0000 C CNN
+F 2 "Resistors_SMD:R_0805" V 2680 2600 50  0001 C CNN
+F 3 "" H 2750 2600 50  0001 C CNN
+	1    2750 2600
+	-1   0    0    -1  
 $EndComp
 $Comp
-L R R504
+L ledbox-rescue:R R504
 U 1 1 5AA47253
-P 4100 1650
-F 0 "R504" V 4180 1650 50  0000 C CNN
-F 1 "100" V 4100 1650 50  0000 C CNN
-F 2 "Resistors_SMD:R_0805" V 4030 1650 50  0001 C CNN
-F 3 "" H 4100 1650 50  0001 C CNN
-	1    4100 1650
-	-1   0    0    1   
+P 3150 2600
+F 0 "R504" V 3230 2600 50  0000 C CNN
+F 1 "100" V 3150 2600 50  0000 C CNN
+F 2 "Resistors_SMD:R_0805" V 3080 2600 50  0001 C CNN
+F 3 "" H 3150 2600 50  0001 C CNN
+	1    3150 2600
+	-1   0    0    -1  
 $EndComp
 $Comp
-L Jumper_NO_Small JP502
+L ledbox-rescue:Jumper_NO_Small JP502
 U 1 1 5AA47726
-P 4100 2000
-F 0 "JP502" V 4054 2048 50  0000 L CNN
-F 1 "IR 36mA" V 4145 2048 50  0000 L CNN
-F 2 "SMD_Jumper:Jumper_SMD_02" H 4100 2000 50  0001 C CNN
-F 3 "" H 4100 2000 50  0001 C CNN
-	1    4100 2000
-	0    1    1    0   
+P 3150 2250
+F 0 "JP502" V 3104 2298 50  0000 L CNN
+F 1 "IR 36mA" V 3195 2298 50  0000 L CNN
+F 2 "SMD_Jumper:Jumper_SMD_02" H 3150 2250 50  0001 C CNN
+F 3 "" H 3150 2250 50  0001 C CNN
+	1    3150 2250
+	0    1    -1   0   
 $EndComp
 $Comp
-L R R505
+L ledbox-rescue:R R505
 U 1 1 5AA478A6
-P 4500 1650
-F 0 "R505" V 4580 1650 50  0000 C CNN
-F 1 "47" V 4500 1650 50  0000 C CNN
-F 2 "Resistors_SMD:R_0805" V 4430 1650 50  0001 C CNN
-F 3 "" H 4500 1650 50  0001 C CNN
-	1    4500 1650
-	-1   0    0    1   
+P 3550 2600
+F 0 "R505" V 3630 2600 50  0000 C CNN
+F 1 "47" V 3550 2600 50  0000 C CNN
+F 2 "Resistors_SMD:R_0805" V 3480 2600 50  0001 C CNN
+F 3 "" H 3550 2600 50  0001 C CNN
+	1    3550 2600
+	-1   0    0    -1  
 $EndComp
 $Comp
-L Jumper_NO_Small JP503
+L ledbox-rescue:Jumper_NO_Small JP503
 U 1 1 5AA47A08
-P 4500 2000
-F 0 "JP503" V 4454 2048 50  0000 L CNN
-F 1 "IR 76mA" V 4545 2048 50  0000 L CNN
-F 2 "SMD_Jumper:Jumper_SMD_02" H 4500 2000 50  0001 C CNN
-F 3 "" H 4500 2000 50  0001 C CNN
-	1    4500 2000
-	0    1    1    0   
+P 3550 2250
+F 0 "JP503" V 3504 2298 50  0000 L CNN
+F 1 "IR 76mA" V 3595 2298 50  0000 L CNN
+F 2 "SMD_Jumper:Jumper_SMD_02" H 3550 2250 50  0001 C CNN
+F 3 "" H 3550 2250 50  0001 C CNN
+	1    3550 2250
+	0    1    -1   0   
 $EndComp
-Text Label 5100 1400 2    60   ~ 0
+Text Label 4150 2850 2    60   ~ 0
 IR_LED_DRV
 $Comp
-L GND #PWR0506
-U 1 1 5AA47F08
-P 3700 3000
-F 0 "#PWR0506" H 3700 2750 50  0001 C CNN
-F 1 "GND" H 3700 2850 50  0000 C CNN
-F 2 "" H 3700 3000 50  0001 C CNN
-F 3 "" H 3700 3000 50  0001 C CNN
-	1    3700 3000
-	1    0    0    -1  
-$EndComp
-$Comp
-L R R502
+L ledbox-rescue:R R502
 U 1 1 5AA48418
-P 3300 2750
-F 0 "R502" V 3380 2750 50  0000 C CNN
-F 1 "47k" V 3300 2750 50  0000 C CNN
-F 2 "Resistors_SMD:R_0805" V 3230 2750 50  0001 C CNN
-F 3 "" H 3300 2750 50  0001 C CNN
-	1    3300 2750
+P 2350 1500
+F 0 "R502" V 2430 1500 50  0000 C CNN
+F 1 "47k" V 2350 1500 50  0000 C CNN
+F 2 "Resistors_SMD:R_0805" V 2280 1500 50  0001 C CNN
+F 3 "" H 2350 1500 50  0001 C CNN
+	1    2350 1500
 	-1   0    0    1   
 $EndComp
-$Comp
-L GND #PWR0503
-U 1 1 5AA48C8A
-P 3300 3000
-F 0 "#PWR0503" H 3300 2750 50  0001 C CNN
-F 1 "GND" H 3300 2850 50  0000 C CNN
-F 2 "" H 3300 3000 50  0001 C CNN
-F 3 "" H 3300 3000 50  0001 C CNN
-	1    3300 3000
-	1    0    0    -1  
-$EndComp
-Connection ~ 3300 2500
+Connection ~ 3150 2850
 Wire Wire Line
-	3300 2600 3300 2500
+	2750 2850 2750 2750
+Connection ~ 3550 2850
 Wire Wire Line
-	3300 3000 3300 2900
+	3150 2850 3150 2750
 Wire Wire Line
-	3700 3000 3700 2700
+	3550 2850 3550 2750
 Wire Wire Line
-	3200 2500 3400 2500
-Connection ~ 4100 1400
+	2650 2850 2750 2850
 Wire Wire Line
-	3700 1400 3700 1500
-Connection ~ 4500 1400
+	3150 2350 3150 2450
 Wire Wire Line
-	4100 1400 4100 1500
+	3550 2350 3550 2450
+Connection ~ 3150 2050
 Wire Wire Line
-	4500 1400 4500 1500
+	3550 2050 3550 2150
+Connection ~ 2750 2050
 Wire Wire Line
-	3600 1400 5100 1400
+	3150 2050 3150 2150
 Wire Wire Line
-	4100 1900 4100 1800
+	2650 2050 2750 2050
 Wire Wire Line
-	4500 1900 4500 1800
-Connection ~ 4100 2200
-Wire Wire Line
-	4500 2200 4500 2100
-Connection ~ 3700 2200
-Wire Wire Line
-	4100 2200 4100 2100
-Wire Wire Line
-	3600 2200 4500 2200
-Wire Wire Line
-	3700 2100 3700 2300
+	2750 2150 2750 2050
 Wire Wire Line
 	8200 1100 8200 1200
 Wire Wire Line
@@ -385,21 +208,18 @@ Wire Wire Line
 	6300 4000 6300 4100
 Wire Wire Line
 	6300 4400 6300 4500
-Connection ~ 7100 1300
 Wire Wire Line
 	7200 1300 7100 1300
-Wire Wire Line
-	7100 1200 7100 1500
 Wire Wire Line
 	7100 1500 7200 1500
 Wire Wire Line
 	6500 1400 7200 1400
-Text HLabel 2800 2500 0    60   Input ~ 0
+Text HLabel 1850 1750 0    60   Input ~ 0
 LED_IR
 Wire Wire Line
-	2900 2500 2800 2500
+	1950 1750 1850 1750
 $Comp
-L WS2812B U501
+L ledbox-rescue:WS2812B U501
 U 1 1 5AA4BF8B
 P 2700 5300
 F 0 "U501" H 2400 5700 60  0000 L CNN
@@ -410,7 +230,7 @@ F 3 "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf" H 2750 4900 60  0001 
 	1    0    0    -1  
 $EndComp
 $Comp
-L WS2812B U502
+L ledbox-rescue:WS2812B U502
 U 1 1 5AA4C0D8
 P 4200 5300
 F 0 "U502" H 3900 5700 60  0000 L CNN
@@ -421,7 +241,7 @@ F 3 "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf" H 4250 4900 60  0001 
 	1    0    0    -1  
 $EndComp
 $Comp
-L WS2812B U503
+L ledbox-rescue:WS2812B U503
 U 1 1 5AA4C130
 P 5700 5300
 F 0 "U503" H 5400 5700 60  0000 L CNN
@@ -432,7 +252,7 @@ F 3 "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf" H 5750 4900 60  0001 
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR0502
+L ledbox-rescue:GND #PWR0502
 U 1 1 5AA4C32F
 P 2700 5900
 F 0 "#PWR0502" H 2700 5650 50  0001 C CNN
@@ -443,7 +263,7 @@ F 3 "" H 2700 5900 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR0508
+L ledbox-rescue:GND #PWR0508
 U 1 1 5AA4C36E
 P 4200 5900
 F 0 "#PWR0508" H 4200 5650 50  0001 C CNN
@@ -454,7 +274,7 @@ F 3 "" H 4200 5900 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR0512
+L ledbox-rescue:GND #PWR0512
 U 1 1 5AA4C3AD
 P 5700 5900
 F 0 "#PWR0512" H 5700 5650 50  0001 C CNN
@@ -465,9 +285,11 @@ F 3 "" H 5700 5900 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR0501
+L ledbox-rescue:+5V #PWR0501
 U 1 1 5AA4C46E
 P 2700 4700
+AR Path="/5AA4C46E" Ref="#PWR0501"  Part="1" 
+AR Path="/5ABDE6F3/5AA4C46E" Ref="#PWR0501"  Part="1" 
 F 0 "#PWR0501" H 2700 4550 50  0001 C CNN
 F 1 "+5V" H 2700 4840 50  0000 C CNN
 F 2 "" H 2700 4700 50  0001 C CNN
@@ -476,9 +298,11 @@ F 3 "" H 2700 4700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR0507
+L ledbox-rescue:+5V #PWR0507
 U 1 1 5AA4C4AD
 P 4200 4700
+AR Path="/5AA4C4AD" Ref="#PWR0507"  Part="1" 
+AR Path="/5ABDE6F3/5AA4C4AD" Ref="#PWR0507"  Part="1" 
 F 0 "#PWR0507" H 4200 4550 50  0001 C CNN
 F 1 "+5V" H 4200 4840 50  0000 C CNN
 F 2 "" H 4200 4700 50  0001 C CNN
@@ -487,9 +311,11 @@ F 3 "" H 4200 4700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR0511
+L ledbox-rescue:+5V #PWR0511
 U 1 1 5AA4C4EC
 P 5700 4700
+AR Path="/5AA4C4EC" Ref="#PWR0511"  Part="1" 
+AR Path="/5ABDE6F3/5AA4C4EC" Ref="#PWR0511"  Part="1" 
 F 0 "#PWR0511" H 5700 4550 50  0001 C CNN
 F 1 "+5V" H 5700 4840 50  0000 C CNN
 F 2 "" H 5700 4700 50  0001 C CNN
@@ -498,7 +324,7 @@ F 3 "" H 5700 4700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C502
+L ledbox-rescue:C C502
 U 1 1 5AA4C72D
 P 4800 4250
 F 0 "C502" H 4825 4350 50  0000 L CNN
@@ -509,7 +335,7 @@ F 3 "" H 4800 4250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C501
+L ledbox-rescue:C C501
 U 1 1 5AA4C77B
 P 3300 4250
 F 0 "C501" H 3325 4350 50  0000 L CNN
@@ -520,7 +346,7 @@ F 3 "" H 3300 4250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR0510
+L ledbox-rescue:GND #PWR0510
 U 1 1 5AA4C857
 P 4800 4500
 F 0 "#PWR0510" H 4800 4250 50  0001 C CNN
@@ -531,7 +357,7 @@ F 3 "" H 4800 4500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR0505
+L ledbox-rescue:GND #PWR0505
 U 1 1 5AA4C89A
 P 3300 4500
 F 0 "#PWR0505" H 3300 4250 50  0001 C CNN
@@ -542,9 +368,11 @@ F 3 "" H 3300 4500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR0509
+L ledbox-rescue:+5V #PWR0509
 U 1 1 5AA4C8DD
 P 4800 4000
+AR Path="/5AA4C8DD" Ref="#PWR0509"  Part="1" 
+AR Path="/5ABDE6F3/5AA4C8DD" Ref="#PWR0509"  Part="1" 
 F 0 "#PWR0509" H 4800 3850 50  0001 C CNN
 F 1 "+5V" H 4800 4140 50  0000 C CNN
 F 2 "" H 4800 4000 50  0001 C CNN
@@ -553,9 +381,11 @@ F 3 "" H 4800 4000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR0504
+L ledbox-rescue:+5V #PWR0504
 U 1 1 5AA4C920
 P 3300 4000
+AR Path="/5AA4C920" Ref="#PWR0504"  Part="1" 
+AR Path="/5ABDE6F3/5AA4C920" Ref="#PWR0504"  Part="1" 
 F 0 "#PWR0504" H 3300 3850 50  0001 C CNN
 F 1 "+5V" H 3300 4140 50  0000 C CNN
 F 2 "" H 3300 4000 50  0001 C CNN
@@ -572,9 +402,9 @@ Wire Wire Line
 Wire Wire Line
 	4800 4500 4800 4400
 Wire Wire Line
-	4700 5300 5200 5300
+	4700 5300 4800 5300
 Wire Wire Line
-	3200 5300 3700 5300
+	3200 5300 3300 5300
 Wire Wire Line
 	4200 4800 4200 4700
 Wire Wire Line
@@ -590,25 +420,25 @@ Wire Wire Line
 Text HLabel 1700 5300 0    60   Input ~ 0
 RGB_IN
 Wire Wire Line
-	1700 5300 2200 5300
+	1700 5300 1800 5300
 $Comp
-L Test_Point TP504
+L ledbox-rescue:Test_Point TP504
 U 1 1 5AA55486
-P 3600 2200
-F 0 "TP504" V 3795 2274 50  0000 C CNN
-F 1 "IR PWM" V 3704 2274 50  0000 C CNN
-F 2 "Test:TEST_10" H 3800 2200 50  0001 C CNN
-F 3 "~" H 3800 2200 50  0001 C CNN
-	1    3600 2200
-	0    -1   -1   0   
+P 2650 2050
+F 0 "TP504" V 2845 2124 50  0000 C CNN
+F 1 "IR PWM" V 2754 2124 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 2850 2050 50  0001 C CNN
+F 3 "~" H 2850 2050 50  0001 C CNN
+	1    2650 2050
+	0    -1   1    0   
 $EndComp
 $Comp
-L Test_Point TP501
+L ledbox-rescue:Test_Point TP501
 U 1 1 5AA55DFF
 P 1800 5200
 F 0 "TP501" H 1858 5320 50  0000 L CNN
 F 1 "RGB1" H 1858 5229 50  0000 L CNN
-F 2 "Test:TEST_10" H 2000 5200 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 2000 5200 50  0001 C CNN
 F 3 "~" H 2000 5200 50  0001 C CNN
 	1    1800 5200
 	1    0    0    -1  
@@ -617,23 +447,23 @@ Wire Wire Line
 	1800 5200 1800 5300
 Connection ~ 1800 5300
 $Comp
-L Test_Point TP502
+L ledbox-rescue:Test_Point TP502
 U 1 1 5AA56993
 P 3300 5200
 F 0 "TP502" H 3358 5320 50  0000 L CNN
 F 1 "RGB2" H 3358 5229 50  0000 L CNN
-F 2 "Test:TEST_10" H 3500 5200 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 3500 5200 50  0001 C CNN
 F 3 "~" H 3500 5200 50  0001 C CNN
 	1    3300 5200
 	1    0    0    -1  
 $EndComp
 $Comp
-L Test_Point TP505
+L ledbox-rescue:Test_Point TP505
 U 1 1 5AA56DEB
 P 4800 5200
 F 0 "TP505" H 4858 5320 50  0000 L CNN
 F 1 "RGB3" H 4858 5229 50  0000 L CNN
-F 2 "Test:TEST_10" H 5000 5200 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 5000 5200 50  0001 C CNN
 F 3 "~" H 5000 5200 50  0001 C CNN
 	1    4800 5200
 	1    0    0    -1  
@@ -645,32 +475,112 @@ Wire Wire Line
 	4800 5200 4800 5300
 Connection ~ 4800 5300
 $Comp
-L Jumper_NO_Small JP501
+L ledbox-rescue:Jumper_NO_Small JP501
 U 1 1 5AA63C09
-P 3700 2000
-F 0 "JP501" V 3654 2048 50  0000 L CNN
-F 1 "IR 12mA" V 3745 2048 50  0000 L CNN
-F 2 "SMD_Jumper:Jumper_SMD_02" H 3700 2000 50  0001 C CNN
-F 3 "" H 3700 2000 50  0001 C CNN
-	1    3700 2000
-	0    1    1    0   
+P 2750 2250
+F 0 "JP501" V 2704 2298 50  0000 L CNN
+F 1 "IR 12mA" V 2795 2298 50  0000 L CNN
+F 2 "SMD_Jumper:Jumper_SMD_02" H 2750 2250 50  0001 C CNN
+F 3 "" H 2750 2250 50  0001 C CNN
+	1    2750 2250
+	0    1    -1   0   
 $EndComp
 Wire Wire Line
-	3700 1900 3700 1800
+	2750 2350 2750 2450
 $Comp
-L Test_Point TP503
+L ledbox-rescue:Test_Point TP503
 U 1 1 5AA669DF
-P 3600 1400
-F 0 "TP503" V 3795 1474 50  0000 C CNN
-F 1 "IR LED" V 3704 1474 50  0000 C CNN
-F 2 "Test:TEST_10" H 3800 1400 50  0001 C CNN
-F 3 "~" H 3800 1400 50  0001 C CNN
-	1    3600 1400
-	0    -1   -1   0   
+P 2650 2850
+F 0 "TP503" V 2845 2924 50  0000 C CNN
+F 1 "IR LED" V 2754 2924 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 2850 2850 50  0001 C CNN
+F 3 "~" H 2850 2850 50  0001 C CNN
+	1    2650 2850
+	0    -1   1    0   
 $EndComp
-Connection ~ 3700 1400
+Connection ~ 2750 2850
 Text HLabel 6300 5300 2    60   Output ~ 0
 RGB_OUT
 Wire Wire Line
 	6200 5300 6300 5300
+Wire Wire Line
+	3150 2850 3550 2850
+Wire Wire Line
+	3550 2850 4150 2850
+Wire Wire Line
+	3150 2050 3550 2050
+Wire Wire Line
+	2750 2050 3150 2050
+Wire Wire Line
+	2750 2050 2750 1950
+Wire Wire Line
+	7100 1300 7100 1500
+Wire Wire Line
+	1800 5300 2200 5300
+Wire Wire Line
+	3300 5300 3700 5300
+Wire Wire Line
+	4800 5300 5200 5300
+Wire Wire Line
+	2750 2850 3150 2850
+$Comp
+L Device:Q_PMOS_GSD Q501
+U 1 1 5AFE393A
+P 2650 1750
+F 0 "Q501" H 2856 1704 50  0000 L CNN
+F 1 "Q_PMOS_GSD" H 2856 1795 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 2850 1850 50  0001 C CNN
+F 3 "~" H 2650 1750 50  0001 C CNN
+	1    2650 1750
+	1    0    0    1   
+$EndComp
+$Comp
+L ledbox-rescue:+5V #PWR0503
+U 1 1 5AFE472D
+P 2350 1250
+F 0 "#PWR0503" H 2350 1100 50  0001 C CNN
+F 1 "+5V" H 2350 1390 50  0000 C CNN
+F 2 "" H 2350 1250 50  0001 C CNN
+F 3 "" H 2350 1250 50  0001 C CNN
+	1    2350 1250
+	1    0    0    -1  
+$EndComp
+$Comp
+L ledbox-rescue:+5V #PWR0506
+U 1 1 5AFE4766
+P 2750 1250
+F 0 "#PWR0506" H 2750 1100 50  0001 C CNN
+F 1 "+5V" H 2750 1390 50  0000 C CNN
+F 2 "" H 2750 1250 50  0001 C CNN
+F 3 "" H 2750 1250 50  0001 C CNN
+	1    2750 1250
+	1    0    0    -1  
+$EndComp
+$Comp
+L ledbox-rescue:GND #PWR0515
+U 1 1 5AFEA9EC
+P 6500 1500
+F 0 "#PWR0515" H 6500 1250 50  0001 C CNN
+F 1 "GND" H 6500 1350 50  0000 C CNN
+F 2 "" H 6500 1500 50  0001 C CNN
+F 3 "" H 6500 1500 50  0001 C CNN
+	1    6500 1500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6500 1300 7100 1300
+Connection ~ 7100 1300
+Wire Wire Line
+	6500 1400 6500 1500
+Wire Wire Line
+	2750 1250 2750 1550
+Wire Wire Line
+	2450 1750 2350 1750
+Wire Wire Line
+	2350 1750 2350 1650
+Wire Wire Line
+	2250 1750 2350 1750
+Connection ~ 2350 1750
+Wire Wire Line
+	2350 1350 2350 1250
 $EndSCHEMATC
