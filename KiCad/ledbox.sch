@@ -360,13 +360,13 @@ Wire Wire Line
 $Comp
 L ledbox-rescue:Conn_02x05_Odd_Even J103
 U 1 1 5AE133E6
-P 1950 4100
-F 0 "J103" H 2000 4517 50  0000 C CNN
-F 1 "To Master" H 2000 4426 50  0000 C CNN
-F 2 "Connectors_IDC:IDC-Header_2x05_Pitch2.54mm_Straight" H 1950 4100 50  0001 C CNN
-F 3 "~" H 1950 4100 50  0001 C CNN
-	1    1950 4100
-	1    0    0    -1  
+P 2050 4100
+F 0 "J103" H 2100 4517 50  0000 C CNN
+F 1 "To Master" H 2100 4426 50  0000 C CNN
+F 2 "Connectors_IDC:IDC-Header_2x05_Pitch2.54mm_Straight" H 2050 4100 50  0001 C CNN
+F 3 "~" H 2050 4100 50  0001 C CNN
+	1    2050 4100
+	-1   0    0    1   
 $EndComp
 Wire Wire Line
 	1000 3900 1000 4000
@@ -381,13 +381,13 @@ Connection ~ 1000 4100
 $Comp
 L ledbox-rescue:Conn_02x05_Odd_Even J105
 U 1 1 5AE178D2
-P 5900 4200
-F 0 "J105" H 5950 4617 50  0000 C CNN
-F 1 "To Slave" H 5950 4526 50  0000 C CNN
-F 2 "Connectors_IDC:IDC-Header_2x05_Pitch2.54mm_Straight" H 5900 4200 50  0001 C CNN
-F 3 "~" H 5900 4200 50  0001 C CNN
-	1    5900 4200
-	1    0    0    -1  
+P 6000 4200
+F 0 "J105" H 6050 4617 50  0000 C CNN
+F 1 "To Slave" H 6050 4526 50  0000 C CNN
+F 2 "Connectors_IDC:IDC-Header_2x05_Pitch2.54mm_Straight" H 6000 4200 50  0001 C CNN
+F 3 "~" H 6000 4200 50  0001 C CNN
+	1    6000 4200
+	-1   0    0    1   
 $EndComp
 Wire Wire Line
 	4950 4000 4950 4100
