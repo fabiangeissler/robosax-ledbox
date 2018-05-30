@@ -6,9 +6,9 @@
 .global send_data
 
 ; Define port
-#define port	PORTC
-#define ddr		DDRC
-#define bit		2
+#define port	PORTD
+#define ddr		DDRD
+#define bit		1
 
 ; Defines a code section
 .section .text

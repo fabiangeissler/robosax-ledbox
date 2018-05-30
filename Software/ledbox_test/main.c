@@ -5,6 +5,16 @@
  *      Author: fabian
  */
 
+// Pinbelegung (LED BOX V.3)
+// Header	Pin	Port	Signal		Flachbandkabel Pin (0 = rot)
+// J406		1	PC1	CLK		1
+// 		2	PC2	LED_DATA_OUT	9
+// 		3	PC3	IR_CLK		5
+//		4	PC4	BTN_LOAD	6
+//		5	PC5	BTN_DATA_IN	7
+// J404		1	PD0	LED_LOAD	8
+//		2	PD1	RGB_DATA	3
+
 
 #define F_CPU 20000000
 
@@ -201,13 +211,13 @@ int main()
 
 	uint8_t d = 0xAA;
 
-	sei();
+	//sei();
 
-	enableRGBUART();
+	//enableRGBUART();
 
 	while(1)
 	{
-		//send_data(_data, LEN);
+		send_data(_data, LEN);
 //		_data[0] = 0xAA;
 //		_data[1] = 0xAA;
 //		_data[2] = 0xAA;
